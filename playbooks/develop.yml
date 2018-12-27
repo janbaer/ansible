@@ -1,0 +1,19 @@
+---
+- name: install development tools
+  hosts: localhost
+  become: True
+
+  tasks:
+    - name: install C/C++ development tools
+      pacman:
+        name:
+          - base-devel
+          - cmake
+          - premake
+          - gdb
+          - valgrind
+
+    - name: Install golang
+      pacman:
+        name:
+          - go

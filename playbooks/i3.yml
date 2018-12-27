@@ -1,0 +1,25 @@
+---
+- name: Install i3 with all required packages
+  hosts: localhost
+
+  tasks:
+    - name: install i3
+      pacman:
+        name:
+          - xorg
+          - conky
+          - compton
+          - i3-gaps
+          - i3lock
+          - i3status
+          - feh
+          - rofi
+          - dmenu
+          - clipit
+          - feh
+          - blueman
+          - pasystray
+          - conky
+          - volumeicon
+          - powerline
+

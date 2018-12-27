@@ -1,0 +1,59 @@
+---
+- name: Update pacman packages
+  hosts: localhost
+  become: True
+
+  tasks:
+    - name: update pacman cache
+      pacman: update_cache=yes
+
+    - name: install pacman tools
+      pacman:
+        name: pacman-contrib
+
+    - name: update pacman package lists
+      command: /usr/bin/pacman -Syy --noconfirm
+
+    - name: perform full upgrade
+      command: /usr/bin/pacman -Su --noconfirm
+
+    - name: Install support for aur
+      git:
+        repo: https://github.com/kewlfft/ansible-aur.git
+        dest: ~/.ansible/plugins/modules/aur
+        archive: /tmp/ansible-aur.zip
+
+    - name: Install all util packages
+      pacman:
+        name:
+          - curl
+          - htop
+          - httpie
+          - jq
+          - fzf
+          - inxi
+          - ack
+          - the_silver_searcher
+          - keychain
+            keepassx2
+          - gopass
+          - gedit
+          - xclip
+          - xsel
+          - mplayer
+          - moc
+          - ranger
+          - shotwell
+          - pinta
+          - scrot
+          - tig
+          - tree
+          - trizen
+          - pygmentize
+          - veracrypt
+
+    - name: install packages from aur
+      aur:
+        use: trizen
+        name:
+          - gnome-terminal-transparency

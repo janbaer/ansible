@@ -1,0 +1,52 @@
+---
+- name: Set Up Node
+  hosts: localhost
+  become_user: "{{ username }}"
+  become: true
+
+  vars:
+    nvm_dir: /home/{{ username }}/.nvm
+
+  environment:
+    NVM_DIR: "{{ nvm_dir }}"
+
+  tasks:
+    - name: Create nvm directory
+      file:
+        path: "{{ nvm_dir  }}"
+        state: directory
+
+    - name: Install nvm
+      shell: >
+        curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | sh
+        creates=/home/{{ username }}/.nvm/nvm.sh
+
+    - name: Install node and set version
+      shell: >
+        /bin/bash -c "source ~/.nvm/nvm.sh && nvm install {{ node_version }} && nvm alias default {{ node_version }}"
+        creates=/home/{{ username }}/.nvm/alias
+
+    - name: Make nvm.sh executable
+      file:
+        path: "{{  nvm_dir }}/nvm.sh"
+        state: touch
+        mode: 0755
+
+    - name: Install yarn
+      pacman:
+        name:
+          - yarn
+        state: present
+      become_user: root
+
+    - name: Install required global npm modules
+      command: "/usr/bin/bash -c {{ nvm_dir }}/nvm.sh && node install -g {{ item }}"
+      with_items:
+        - eslint
+        - google-translate-cli
+        - now
+        - live-server
+        - ndb
+        - typescript
+      environment:
+        PATH: $PATH:{{ nvm_dir }}

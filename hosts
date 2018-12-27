@@ -1,0 +1,4 @@
+
+[HOME]
+localhost ansible_connection=local
+JABASOFT-DS ansible_ssh_host=JABASOFT-DS ansible_ssh_private_key_file=~/.ssh/rsync-key ansible_user=jan
