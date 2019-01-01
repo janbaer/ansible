@@ -11,7 +11,7 @@
 
     - name: Clone dotfiles
       git:
-        repo: https://github.com/janbaer/dotfiles.git
+        repo: git@github.com:janbaer/dotfiles.git
         dest: /home/{{ username }}/Projects/dotfiles
 
     - name: Sync dotfiles

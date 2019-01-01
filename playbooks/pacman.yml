@@ -17,12 +17,6 @@
     - name: perform full upgrade
       command: /usr/bin/pacman -Su --noconfirm
 
-    - name: Install support for aur
-      git:
-        repo: https://github.com/kewlfft/ansible-aur.git
-        dest: ~/.ansible/plugins/modules/aur
-        archive: /tmp/ansible-aur.zip
-
     - name: Install all util packages
       pacman:
         name:
