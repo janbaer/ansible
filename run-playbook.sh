@@ -1,3 +1,3 @@
 PLAYBOOK=${1:-all.yml}
 
-sudo ansible-playbook -vvv ${PLAYBOOK} $*
+sudo ansible-playbook ${PLAYBOOK} $*
