@@ -44,7 +44,10 @@
           - tree
           - trizen
           - pygmentize
+          - flameshot
           - veracrypt
+          - network-manager-applet
+          - sxiv
 
     - name: install packages from aur
       aur:
