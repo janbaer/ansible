@@ -12,6 +12,7 @@
           - premake
           - gdb
           - valgrind
+          - gitg
 
     - name: Install golang
       pacman:
