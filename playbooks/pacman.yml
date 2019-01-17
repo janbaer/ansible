@@ -48,9 +48,13 @@
           - veracrypt
           - network-manager-applet
           - sxiv
+          - meld
+          - rust
 
     - name: install packages from aur
+      become_user: "{{ username }}"
       aur:
         use: trizen
         name:
           - gnome-terminal-transparency
+          - watchexec
