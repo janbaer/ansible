@@ -58,3 +58,7 @@
         name:
           - gnome-terminal-transparency
           - watchexec
+
+    - name: Install libinput-gesture and configure it
+      include_tasks: ./tasks/libinut-gestures.yml
+

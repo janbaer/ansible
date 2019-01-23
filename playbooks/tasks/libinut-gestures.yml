@@ -1,0 +1,16 @@
+---
+
+  - name: install packages from aur
+    become_user: "{{ username }}"
+    aur:
+      use: trizen
+      name:
+        - libinput-gestures
+
+  - name: add user to input group
+    user:
+      name: '{{ username }}'
+      groups: input
+      append: yes
+
+
