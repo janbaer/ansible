@@ -4,17 +4,22 @@
   become: True
 
   tasks:
-    - name: install C/C++ development tools
+    - name: install development tools
       pacman:
         name:
           - base-devel
           - cmake
-          - premake
-          - gdb
-          - valgrind
           - gitg
 
     - name: Install golang
       pacman:
         name:
           - go
+
+  - name: install developer packages from aur
+    become_user: "{{ username }}"
+    aur:
+      use: trizen
+      name:
+        - git-extras
+
