@@ -16,10 +16,16 @@
         name:
           - go
 
-  - name: install developer packages from aur
-    become_user: "{{ username }}"
-    aur:
-      use: trizen
-      name:
-        - git-extras
+    - name: install developer packages from aur
+      become_user: "{{ username }}"
+      aur:
+        use: trizen
+        name:
+          - git-extras
+
+    - name: install tools with Go
+      become_user: "{{ username }}"
+      command: go get -u {{ item }}
+      with_items:
+        - github.com/mholt/archiver/cmd/arc
 
