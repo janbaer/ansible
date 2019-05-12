@@ -1,11 +1,11 @@
 ---
 - name: Set Up Node
   hosts: localhost
-  become_user: "{{ username }}"
+  become_user: "{{ USER_NAME }}"
   become: true
 
   vars:
-    nvm_dir: /home/{{ username }}/.nvm
+    nvm_dir: /home/{{ USER_NAME }}/.nvm
 
   environment:
     NVM_DIR: "{{ nvm_dir }}"
@@ -19,12 +19,12 @@
     - name: Install nvm
       shell: >
         curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | sh
-        creates=/home/{{ username }}/.nvm/nvm.sh
+        creates=/home/{{ USER_NAME }}/.nvm/nvm.sh
 
     - name: Install node and set version
       shell: >
-        /bin/bash -c "source ~/.nvm/nvm.sh && nvm install {{ node_version }} && nvm alias default {{ node_version }}"
-        creates=/home/{{ username }}/.nvm/alias
+        /bin/bash -c "source ~/.nvm/nvm.sh && nvm install {{ NODE_VERSION }} && nvm alias default {{ NODE_VERSION }}"
+        creates=/home/{{ USER_NAME }}/.nvm/alias
 
     - name: Make nvm.sh executable
       file:

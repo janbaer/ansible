@@ -12,16 +12,18 @@
           - python-docker
 
     - name: ensure the docker group exists
-      group: name=docker
-             state=present
+      group:
+        name: docker
+        state: present
 
     - name: add user to docker group
       user: 
-        name: {{ username }}
+        name: {{ USER_NAME }}
         groups: docker
         append: yes
 
     - name: enable docker service
-      service: name=docker
-               enabled=yes
-               state=started
+      service:
+        name: docker
+        enabled: yes
+        state: started

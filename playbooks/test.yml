@@ -1,0 +1,8 @@
+---
+- name: Install and configure tmux
+  hosts: localhost
+
+  tasks:
+    - name: Read environment variables
+      debug:
+        msg: "{{ IS_NOTEBOOK }}"

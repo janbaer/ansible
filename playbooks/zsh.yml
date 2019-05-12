@@ -1,7 +1,7 @@
 ---
 - name: Setup zsh
   hosts: localhost
-  become_user: "{{ username }}"
+  become_user: "{{ USER_NAME }}"
   become: true
 
   tasks:
@@ -18,5 +18,5 @@
         update: no
 
     - name: set zsh as default shell
-      command: "chsh -s /usr/bin/zsh {{ username }}"
+      command: "chsh -s /usr/bin/zsh {{ USER_NAME }}"
       become_user: root

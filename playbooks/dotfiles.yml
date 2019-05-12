@@ -1,20 +1,20 @@
-- name: install C/C++ development tools
+- name: install My dotfile
   hosts: localhost
-  become_user: "{{ username }}"
+  become_user: "{{ USER_NAME }}"
   become: true
 
   tasks:
     - name: Create projects directory
       file:
-        path: /home/{{ username }}/Projects
+        path: /home/{{ USER_NAME }}/Projects
         state: directory
 
     - name: Clone dotfiles
       git:
         repo: git@github.com:janbaer/dotfiles.git
-        dest: /home/{{ username }}/Projects/dotfiles
+        dest: /home/{{ USER_NAME }}/Projects/dotfiles
 
     - name: Sync dotfiles
       command: "./sync.sh"
       args:
-        chdir: /home/{{ username }}/Projects/dotfiles
+        chdir: /home/{{ USER_NAME }}/Projects/dotfiles

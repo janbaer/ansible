@@ -22,4 +22,12 @@
           - conky
           - volumeicon
           - powerline
+          - dunst
+
+- name: install packages from aur
+  become_user: "{{ USER_NAME }}"
+  aur:
+    use: trizen
+    name:
+      - rofi-greenclip
 

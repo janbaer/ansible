@@ -20,6 +20,8 @@
     - name: Install all util packages
       pacman:
         name:
+          - alsa-tools
+          - arch-audit
           - curl
           - htop
           - httpie
@@ -49,16 +51,24 @@
           - network-manager-applet
           - sxiv
           - meld
-          - rust
+          - zathura
+          - zathura-pdf-mupdf
+          - evince
+          - pdfpc
+          - sshpass
+          - ncdu
+          - gopass
+        state: present
+        force: yes
 
     - name: install packages from aur
-      become_user: "{{ username }}"
+      become_user: "{{ USER_NAME }}"
       aur:
         use: trizen
         name:
           - gnome-terminal-transparency
-          - watchexec
 
     - name: Install libinput-gesture and configure it
       include_tasks: ./tasks/libinut-gestures.yml
+      when: {{ IS_NOTEBOOK == true }}
 

@@ -1,7 +1,7 @@
 ---
 - name: Install and configure tmux
   hosts: localhost
-  become_user: "{{ username }}"
+  become_user: "{{ USER_NAME }}"
   become: True
 
   tasks:
@@ -13,18 +13,18 @@
 
     - name: Create tmux config dir
       file:
-        path: /home/{{ username }}/.tmux
+        path: /home/{{ USER_NAME }}/.tmux
         state: directory
 
     - name: Download plugin tpm
       git:
         repo: https://github.com/tmux-plugins/tpm
-        dest: /home/{{ username }}/.tmux/plugins/tpm
+        dest: /home/{{ USER_NAME }}/.tmux/plugins/tpm
         archive: /tmp/tpm.zip
 
     - name: Download plugin tmux-resurrect
       git:
         repo: https://github.com/tmux-plugins/tmux-resurrect
-        dest: /home/{{ username }}/.tmux/plugins/tmux-resurrect
+        dest: /home/{{ USER_NAME }}/.tmux/plugins/tmux-resurrect
         archive: /tmp/tmux-resurrect.zip
 

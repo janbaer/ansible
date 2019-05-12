@@ -1,7 +1,7 @@
 ---
 - name: Setup my Vim with plugins
   hosts: localhost
-  become_user: "{{ username }}"
+  become_user: "{{ USER_NAME }}"
   become: true
 
   tasks:
@@ -12,7 +12,12 @@
 
     - name: Create directory for bundle
       file:
-        path: "/home/{{ username }}/.vim/bundle"
+        path: "/home/{{ USER_NAME }}/.vim/bundle"
+        state: directory
+
+    - name: Create directory for persistent undo
+      file:
+        path: "/home/{{ USER_NAME }}/.vim/undo"
         state: directory
 
     - name: Download vim plugin manager Vundle
@@ -27,11 +32,6 @@
 
     - name: Install and update Vim plugins
       command: "/usr/bin/vim +PluginInstall +qall"
-
-    - name: Build YouCompleteMe
-      command: "./install.py --go-completer --ts-completer"
-      args:
-        chdir: "/home/{{ username }}/.vim/bundle/YouCompleteMe"
 
     - name: Install and update Go binaries
       command: "/usr/bin/vim +GoInstallBinaries +qall"

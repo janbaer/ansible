@@ -10,21 +10,28 @@
           - base-devel
           - cmake
           - gitg
+          - highlight
+          - jq
 
+    - name: Download Go archive
+      get_url:
+        url: "https://dl.google.com/go/{{ GO_ARCHIVE_NAME }}"
+        dest: "/tmp/{{ GO_ARCHIVE_NAME }}"
+        mode: 0440
     - name: Install golang
       pacman:
         name:
           - go
 
     - name: install developer packages from aur
-      become_user: "{{ username }}"
+      become_user: "{{ USER_NAME }}"
       aur:
         use: trizen
         name:
           - git-extras
 
     - name: install tools with Go
-      become_user: "{{ username }}"
+      become_user: "{{ USER_NAME }}"
       command: go get -u {{ item }}
       with_items:
         - github.com/mholt/archiver/cmd/arc

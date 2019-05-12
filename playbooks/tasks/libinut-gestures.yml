@@ -1,7 +1,7 @@
 ---
 
   - name: install packages from aur
-    become_user: "{{ username }}"
+    become_user: "{{ USER_NAME }}"
     aur:
       use: trizen
       name:
@@ -9,7 +9,7 @@
 
   - name: add user to input group
     user:
-      name: '{{ username }}'
+      name: '{{ USER_NAME }}'
       groups: input
       append: yes
 
