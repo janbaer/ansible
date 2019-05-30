@@ -9,19 +9,31 @@
         name:
           - base-devel
           - cmake
-          - gitg
-          - highlight
-          - jq
+          - gitg                    # GUI for Git
+          - highlight               # Higlighting sourcecode
+          - jq                      # Tool for querying json in the commandline
+          - httpie                  # My favorite tools for HTTP request in the commandline
+      become_user: "{{ USER_NAME }}"
 
     - name: Download Go archive
       get_url:
         url: "https://dl.google.com/go/{{ GO_ARCHIVE_NAME }}"
         dest: "/tmp/{{ GO_ARCHIVE_NAME }}"
         mode: 0440
+      become_user: "{{ USER_NAME }}"
+
     - name: Install golang
-      pacman:
-        name:
-          - go
+      unarchive:
+        src: "/tmp/{{ GO_ARCHIVE_NAME }}"
+        dest: "/usr/local"
+      become_user: "root"
+
+    # - name: install tools with Go
+      # become_user: "{{ USER_NAME }}"
+      # command: go get -u {{ item }}
+      # with_items:
+        # - github.com/mholt/archiver/cmd/arc
+      # become_user: "{{ USER_NAME }}"
 
     - name: install developer packages from aur
       become_user: "{{ USER_NAME }}"
@@ -29,10 +41,5 @@
         use: trizen
         name:
           - git-extras
-
-    - name: install tools with Go
       become_user: "{{ USER_NAME }}"
-      command: go get -u {{ item }}
-      with_items:
-        - github.com/mholt/archiver/cmd/arc
 

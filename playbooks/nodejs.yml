@@ -5,7 +5,7 @@
   become: true
 
   vars:
-    nvm_dir: /home/{{ USER_NAME }}/.nvm
+      nvm_dir: "{{ HOME_DIR }}/.nvm"
 
   environment:
     NVM_DIR: "{{ nvm_dir }}"
@@ -23,7 +23,7 @@
 
     - name: Install node and set version
       shell: >
-        /bin/bash -c "source ~/.nvm/nvm.sh && nvm install {{ NODE_VERSION }} && nvm alias default {{ NODE_VERSION }}"
+        /bin/bash -c "source {{ nvm_dir }}/nvm.sh && nvm install {{ NODE_VERSION }} && nvm alias default {{ NODE_VERSION }}"
         creates=/home/{{ USER_NAME }}/.nvm/alias
 
     - name: Make nvm.sh executable

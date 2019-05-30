@@ -20,55 +20,57 @@
     - name: Install all util packages
       pacman:
         name:
-          - alsa-tools
-          - arch-audit
-          - curl
-          - htop
-          - httpie
-          - jq
-          - fzf
-          - inxi
-          - ack
-          - the_silver_searcher
-          - keychain
-            keepassx2
-          - gopass
-          - gedit
-          - xclip
-          - xsel
-          - mplayer
-          - moc
-          - ranger
-          - shotwell
-          - pinta
-          - scrot
-          - tig
-          - tree
-          - trizen
-          - pygmentize
-          - flameshot
-          - veracrypt
-          - network-manager-applet
-          - sxiv
-          - meld
-          - zathura
-          - zathura-pdf-mupdf
-          - evince
-          - pdfpc
-          - sshpass
-          - ncdu
-          - gopass
+          - ack                           # Searching from the commandline (In case that ag will not found anything)
+          - alsa-tools                    # Tools for managing audio output
+          - arch-audit                    # Searching for vulnerable arch-packages
+          - curl                          # Http-Requests from the commandline
+          - evince                        # Another Pdf-Viewer
+          - fzf                           # Fuzzyfinder for the commandline
+          - flameshot                     # A better tool for making screenshots
+          - gopass                        # Passwordmanagement in the commandline (Better than pass)
+          - gedit                         # The Gnome editor
+          - gvim                          # Vi IMproved, a programmer's text editor
+          - htop                          # Better tool to show system resource usage in the commandline
+          - inxi                          # Show hardware informations about my computer
+          - keepassx2                     # Manage my passwords with a GUI
+          - keychain                      # re-use ssh-agent and/or gpg-agent between logins
+          - kitty                         # Terminal with tranparency and glyph fonts
+          - meld                          # Difftool with UI
+          - mplayer                       # Videoplayer for the terminal
+          - moc                           # MusicPlayer for the terminal
+          - network-manager-applet        # Managing network connection from the i3 toolbar
+          - ncdu                          # Show disk usage
+          - otf-fira-code                 # My favorite fonts for source code with ligatures
+          - ttf-fira-code                 # My favorite fonts for source code with ligatures
+          - pdfpc                         # PdfViewer for presentations
+          - pinta                         # Image-Editor
+          - pygmentize                    # highlights the input file
+          - ranger                        # My favorite file manager for the terminal
+          - scrot                         # Screenshot-Tool
+          - shotwell                      # ImageLibraries with GUI
+          - sshpass                       # Pass passwords to the ssh tool
+          - the_silver_searcher           # AG is the faster alternative to Ack
+          - tig                           # My favorite tool for Git in the terminal
+          - tree                          # Commandline tool to show directory tree
+          - trizen                        # This is the tool for install additional packages from AUR
+          - veracrypt                     # Using encrypted file containers
+          - sxiv                          # Imageviewing in the terminal
+          - xclip                         # Clipboard usage in the terminal
+          - xsel                          # Commandlinetool for the clipboard
+          - zathura                       # A Pdf viewer for the terminal
+          - zathura-pdf-mupdf             # Plugin for Zahthura to show Pdf and Epubs
         state: present
-        force: yes
+        force: no
 
-    - name: install packages from aur
-      become_user: "{{ USER_NAME }}"
-      aur:
-        use: trizen
-        name:
-          - gnome-terminal-transparency
+    # - name: install packages from aur
+      # become: true
+      # become_user: "{{ USER_NAME }}"
+      # aur:
+        # use: trizen
+        # name:
+          # - 
 
     - name: Install libinput-gesture and configure it
       include_tasks: ./tasks/libinut-gestures.yml
-      when: {{ IS_NOTEBOOK == true }}
+      when: IS_NOTEBOOK == true
 

@@ -5,33 +5,40 @@
   become: true
 
   tasks:
-    - name: install vim
-      pacman:
-        name: gvim
-      become_user: root
-
     - name: Create directory for bundle
       file:
         path: "/home/{{ USER_NAME }}/.vim/bundle"
         state: directory
+      become_user: "{{ USER_NAME }}"
 
     - name: Create directory for persistent undo
       file:
         path: "/home/{{ USER_NAME }}/.vim/undo"
         state: directory
+      become_user: "{{ USER_NAME }}"
 
     - name: Download vim plugin manager Vundle
       git:
         repo: https://github.com/VundleVim/Vundle.vim.git
         dest: ~/.vim/bundle/Vundle.vim
+      become_user: "{{ USER_NAME }}"
 
     - name: Download papercolor theme to suppress error while installing plugins
       git:
         repo: https://github.com/NLKNguyen/papercolor-theme.git
         dest: ~/.vim/bundle/papercolor-theme
+      become_user: "{{ USER_NAME }}"
 
     - name: Install and update Vim plugins
-      command: "/usr/bin/vim +PluginInstall +qall"
+      command: "vim -e -s -S '{{ HOME_DIR }}/.vimrc' -c PluginInstall -c qa"
+      register: verification
+      changed_when: verification.rc == 1
+      failed_when: verification.rc not in [0,1]
+      become_user: "{{ USER_NAME }}"
 
     - name: Install and update Go binaries
-      command: "/usr/bin/vim +GoInstallBinaries +qall"
+      command: "vim -e -s -S '{{ HOME_DIR }}/.vimrc' -c GoInstallBinaries -c qa"
+      register: verification
+      changed_when: verification.rc == 1
+      failed_when: verification.rc not in [0,1]
+      become_user: "{{ USER_NAME }}"

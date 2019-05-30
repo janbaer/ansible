@@ -1,6 +1,7 @@
 ---
 - name: Install i3 with all required packages
   hosts: localhost
+  become: true
 
   tasks:
     - name: install i3
@@ -23,11 +24,12 @@
           - volumeicon
           - powerline
           - dunst
+        state: present
 
-- name: install packages from aur
-  become_user: "{{ USER_NAME }}"
-  aur:
-    use: trizen
-    name:
-      - rofi-greenclip
+    - name: install packages from aur
+      become_user: "{{ USER_NAME }}"
+      aur:
+        use: trizen
+        name:
+          - rofi-greenclip
 

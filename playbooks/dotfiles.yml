@@ -6,15 +6,15 @@
   tasks:
     - name: Create projects directory
       file:
-        path: /home/{{ USER_NAME }}/Projects
+        path: "{{ HOME_DIR }}/Projects"
         state: directory
 
     - name: Clone dotfiles
       git:
-        repo: git@github.com:janbaer/dotfiles.git
-        dest: /home/{{ USER_NAME }}/Projects/dotfiles
+        repo: https://github.com/janbaer/dotfiles.git
+        dest: "{{ HOME_DIR }}/Projects/dotfiles"
 
     - name: Sync dotfiles
       command: "./sync.sh"
       args:
-        chdir: /home/{{ USER_NAME }}/Projects/dotfiles
+        chdir: "{{ HOME_DIR }}/Projects/dotfiles"
