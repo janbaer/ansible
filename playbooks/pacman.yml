@@ -20,6 +20,7 @@
     - name: Install all util packages
       pacman:
         name:
+          - arandr                        # GUI for selecting multiple monitors location and resolution
           - ack                           # Searching from the commandline (In case that ag will not found anything)
           - alsa-tools                    # Tools for managing audio output
           - arch-audit                    # Searching for vulnerable arch-packages
