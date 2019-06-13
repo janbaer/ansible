@@ -58,6 +58,7 @@
           - sxiv                          # Imageviewing in the terminal
           - xclip                         # Clipboard usage in the terminal
           - xsel                          # Commandlinetool for the clipboard
+          - youtube-dl                    # Downloading Youtube videos and music from the commandline
           - zathura                       # A Pdf viewer for the terminal
           - zathura-pdf-mupdf             # Plugin for Zahthura to show Pdf and Epubs
         state: present
