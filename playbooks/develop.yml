@@ -13,7 +13,7 @@
           - highlight               # Higlighting sourcecode
           - jq                      # Tool for querying json in the commandline
           - httpie                  # My favorite tools for HTTP request in the commandline
-      become_user: "{{ USER_NAME }}"
+      become_user: "root"
 
     - name: Download Go archive
       get_url:
