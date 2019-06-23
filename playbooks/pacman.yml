@@ -33,7 +33,7 @@
           - gvim                          # Vi IMproved, a programmer's text editor
           - htop                          # Better tool to show system resource usage in the commandline
           - inxi                          # Show hardware informations about my computer
-          - keepassx2                     # Manage my passwords with a GUI
+          - keepassxc                     # Manage my passwords with a GUI
           - keychain                      # re-use ssh-agent and/or gpg-agent between logins
           - kitty                         # Terminal with tranparency and glyph fonts
           - meld                          # Difftool with UI
@@ -43,6 +43,7 @@
           - ncdu                          # Show disk usage
           - otf-fira-code                 # My favorite fonts for source code with ligatures
           - ttf-fira-code                 # My favorite fonts for source code with ligatures
+          - pavucontrol                   # Pulseaudio Audio Control 
           - pdfpc                         # PdfViewer for presentations
           - pinta                         # Image-Editor
           - pygmentize                    # highlights the input file
@@ -58,7 +59,6 @@
           - sxiv                          # Imageviewing in the terminal
           - xclip                         # Clipboard usage in the terminal
           - xsel                          # Commandlinetool for the clipboard
-          - youtube-dl                    # Downloading Youtube videos and music from the commandline
           - zathura                       # A Pdf viewer for the terminal
           - zathura-pdf-mupdf             # Plugin for Zahthura to show Pdf and Epubs
         state: present
@@ -70,7 +70,14 @@
       # aur:
         # use: trizen
         # name:
-          # - 
+        #  - 
+
+    - name: Install Youtube-dl from the original location to prevent outdated version
+      get_url:
+        url: "https://yt-dl.org/downloads/latest/youtube-dl"
+        dest: "/usr/local/bin/youtube-dl"
+        mode: 0755
+      become_user: "root"
 
     - name: Install libinput-gesture and configure it
       include_tasks: ./tasks/libinut-gestures.yml
