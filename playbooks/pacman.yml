@@ -39,6 +39,7 @@
           - meld                          # Difftool with UI
           - mplayer                       # Videoplayer for the terminal
           - moc                           # MusicPlayer for the terminal
+          - neofetch                      # Creating a nice splashscreen when starting a new shell
           - network-manager-applet        # Managing network connection from the i3 toolbar
           - ncdu                          # Show disk usage
           - otf-fira-code                 # My favorite fonts for source code with ligatures
