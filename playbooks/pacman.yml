@@ -25,6 +25,7 @@
           - arandr                        # GUI for selecting multiple monitors location and resolution
           - arch-audit                    # Searching for vulnerable arch-packages
           - curl                          # Http-Requests from the commandline
+          - easytag                       # Managing id3 tags of MP3 files
           - evince                        # Another Pdf-Viewer
           - fzf                           # Fuzzyfinder for the commandline
           - flameshot                     # A better tool for making screenshots
