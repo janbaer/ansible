@@ -37,7 +37,6 @@
           - keepassxc                     # Manage my passwords with a GUI
           - keychain                      # re-use ssh-agent and/or gpg-agent between logins
           - kitty                         # Terminal with tranparency and glyph fonts
-          - meld                          # Difftool with UI
           - mplayer                       # Videoplayer for the terminal
           - moc                           # MusicPlayer for the terminal
           - neofetch                      # Creating a nice splashscreen when starting a new shell

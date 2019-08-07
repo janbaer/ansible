@@ -13,6 +13,7 @@
           - highlight               # Higlighting sourcecode
           - jq                      # Tool for querying json in the commandline
           - httpie                  # My favorite tools for HTTP request in the commandline
+          - meld                    # Difftool with UI
       become_user: "root"
 
     - name: Download Go archive
