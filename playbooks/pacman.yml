@@ -65,7 +65,7 @@
         state: present
         force: no
 
-    - name: install packages from aur
+    - name: Install packages from aur
       become: true
       become_user: "{{ USER_NAME }}"
       aur:
