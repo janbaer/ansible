@@ -5,17 +5,15 @@
   become: true
 
   tasks:
-    - name: Create directory for bundle
+    - name: Create required directories
       file:
-        path: "/home/{{ USER_NAME }}/.vim/bundle"
+        path: "/home/{{ USER_NAME }}/.vim/{{item}}"
         state: directory
       become_user: "{{ USER_NAME }}"
-
-    - name: Create directory for persistent undo
-      file:
-        path: "/home/{{ USER_NAME }}/.vim/undo"
-        state: directory
-      become_user: "{{ USER_NAME }}"
+      with_items:
+        - bundle
+        - undo
+        - spell
 
     - name: Download vim plugin manager Vundle
       git:
@@ -28,6 +26,14 @@
         repo: https://github.com/NLKNguyen/papercolor-theme.git
         dest: ~/.vim/bundle/papercolor-theme
       become_user: "{{ USER_NAME }}"
+
+    - name: Download files for German spell checking
+      get_url:
+        url: "http://ftp.vim.org/vim/runtime/spell/{{item}}"
+        dest: "/home/{{ USER_NAME }}/.vim/spell"
+      with_items:
+        - de.utf-8.spl
+        - de.utf-8.sug
 
     - name: Install and update Vim plugins
       command: "vim -e -s -S '{{ HOME_DIR }}/.vimrc' -c PluginInstall -c qa"
