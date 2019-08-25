@@ -9,11 +9,13 @@
         name:
           - base-devel
           - cmake
+          - ctags                   # Its required for the tags plugin in VIM
           - gitg                    # GUI for Git
           - highlight               # Higlighting sourcecode
           - jq                      # Tool for querying json in the commandline
           - httpie                  # My favorite tools for HTTP request in the commandline
           - meld                    # Difftool with UI
+        state: present
       become_user: "root"
 
     - name: Download Go archive
@@ -29,12 +31,11 @@
         dest: "/usr/local"
       become_user: "root"
 
-    # - name: install tools with Go
-      # become_user: "{{ USER_NAME }}"
-      # command: go get -u {{ item }}
-      # with_items:
-        # - github.com/mholt/archiver/cmd/arc
-      # become_user: "{{ USER_NAME }}"
+    - name: install tools with Go
+      become_user: "{{ USER_NAME }}"
+      command: go get -u {{ item }}
+      become_user: "{{ USER_NAME }}"
+      with_items: []
 
     - name: install developer packages from aur
       become_user: "{{ USER_NAME }}"
