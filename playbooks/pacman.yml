@@ -84,3 +84,6 @@
       include_tasks: ./tasks/libinut-gestures.yml
       when: IS_NOTEBOOK == true
 
+    - name: We need to copy files for the detection of the KEY-ID USB dongle
+      include_tasks: ./tasks/copy-u2f-rules.yml
+
