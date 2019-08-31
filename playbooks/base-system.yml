@@ -44,6 +44,7 @@
           - ncdu                          # Show disk usage
           - otf-fira-code                 # My favorite fonts for source code with ligatures
           - ttf-fira-code                 # My favorite fonts for source code with ligatures
+          - pam-u2f                       # Support for authentication with U2F keys
           - pavucontrol                   # Pulseaudio Audio Control 
           - pdfpc                         # PdfViewer for presentations
           - pinta                         # Image-Editor
