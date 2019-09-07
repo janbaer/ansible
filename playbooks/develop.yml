@@ -25,6 +25,12 @@
         mode: 0440
       become_user: "{{ USER_NAME }}"
 
+    - name: Remove any previous existing Go installation
+      file:
+        name: "/usr/local/go"
+        state: absent
+      become_user: "root"
+
     - name: Install golang
       unarchive:
         src: "/tmp/{{ GO_ARCHIVE_NAME }}"
