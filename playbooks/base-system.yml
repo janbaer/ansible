@@ -7,9 +7,10 @@
     - name: update pacman cache
       pacman: update_cache=yes
 
-    - name: install pacman tools
-      pacman:
-        name: pacman-contrib
+    # - name: install pacman tools
+      # pacman:
+        # name: pacman-contrib
+        # state: present
 
     - name: update pacman package lists
       command: /usr/bin/pacman -Syy --noconfirm
