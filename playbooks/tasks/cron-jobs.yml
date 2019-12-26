@@ -1,0 +1,13 @@
+---
+
+- debug:
+    msg: "Create cron jobs"
+
+- name: Backup my home dir every day
+  become_user: "root"
+  cron:
+    name: "rsync-JABASOFT-LINUX-PC1"
+    minute: "0"
+    hour: "14,19"
+    job: "JABASOFT_DS_SSH_PORT=26 /home/jan/bin/rsync-JABASOFT-LINUX-PC1.sh > /var/log/cron-log.txt"
+  tags: cron
