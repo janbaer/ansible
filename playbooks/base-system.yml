@@ -83,6 +83,9 @@
         mode: 0755
       become_user: "root"
 
+    - name: Install RawTherapee
+      include_tasks: ./tasks/raw-therapee.yml
+
     - name: Install libinput-gesture and configure it
       include_tasks: ./tasks/libinut-gestures.yml
       when: IS_NOTEBOOK == true
