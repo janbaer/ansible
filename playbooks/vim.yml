@@ -11,20 +11,21 @@
         state: directory
       become_user: "{{ USER_NAME }}"
       with_items:
-        - bundle
         - undo
         - spell
+        - autoload
+        - plugged
 
-    - name: Download vim plugin manager Vundle
-      git:
-        repo: https://github.com/VundleVim/Vundle.vim.git
-        dest: ~/.vim/bundle/Vundle.vim
+    - name: Download vim plugin manager Plug
+      get_url:
+        url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        dest: "/home/{{ USER_NAME }}/.vim/autoload/plug.vim"
       become_user: "{{ USER_NAME }}"
 
     - name: Download papercolor theme to suppress error while installing plugins
       git:
         repo: https://github.com/NLKNguyen/papercolor-theme.git
-        dest: ~/.vim/bundle/papercolor-theme
+        dest: ~/.vim/plugged/papercolor-theme
       become_user: "{{ USER_NAME }}"
 
     - name: Download files for German spell checking
@@ -36,7 +37,7 @@
         - de.utf-8.sug
 
     - name: Install and update Vim plugins
-      command: "vim -e -s -S '{{ HOME_DIR }}/.vimrc' -c PluginInstall -c qa"
+      command: "vim -e -s -S '{{ HOME_DIR }}/.vimrc' -c PlugInstall -c qa"
       register: verification
       changed_when: verification.rc == 1
       failed_when: verification.rc not in [0,1]
