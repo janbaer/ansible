@@ -6,9 +6,9 @@ HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 
 IS_NOTEBOOK: "{{ HOST_NAME == 'JABASOFT-MBX' }}"
 
-NODE_VERSION: 13.9.0
+NODE_VERSION: 14.0.0
 
-GO_VERSION: 1.14
+GO_VERSION: 1.14.2
 GO_ARCHIVE_NAME: "go{{ GO_VERSION }}.linux-amd64.tar.gz"
 
 RAW_THERAPEE_VERSION: 5.8
