@@ -70,14 +70,6 @@
         state: present
         force: no
 
-    - name: Install packages from aur
-      become: true
-      become_user: "{{ USER_NAME }}"
-      aur:
-        use: trizen
-        name:
-          - pulseaudio-bluetooth-a2dp-gdm-fix
-
     - name: Install Youtube-dl from the original location to prevent outdated version
       get_url:
         url: "https://yt-dl.org/downloads/latest/youtube-dl"
