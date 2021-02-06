@@ -24,6 +24,7 @@
         use: trizen
         name:
           - git-extras
+          - http-prompt
       become_user: "{{ USER_NAME }}"
 
     - name: check if go is installed at all
