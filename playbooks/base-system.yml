@@ -30,6 +30,7 @@
           - davfs2                        # Mounting DAV filesystem
           - easytag                       # Managing id3 tags of MP3 files
           - evince                        # Another Pdf-Viewer
+          - exa                           # A nice replacement for the ls command
           - fzf                           # Fuzzyfinder for the commandline
           - flameshot                     # A better tool for making screenshots
           - gopass                        # Passwordmanagement in the commandline (Better than pass)
