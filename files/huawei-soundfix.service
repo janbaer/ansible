@@ -1,9 +1,0 @@
-[Unit]
-Description=Huawei-soundfix
-
-[Service]
-Type=idle
-ExecStart=/usr/bin/bash /usr/bin/huawei-soundfix.sh
-
-[Install]
-WantedBy=multi-user.target suspend.target hibernate.target hybrid-sleep.target
