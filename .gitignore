@@ -1,1 +1,6 @@
+.vscode
+
+*.log
 *.retry
+
+.fact_cache/

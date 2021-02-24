@@ -1,0 +1,8 @@
+---
+
+- name: Download RawTherapee {{ RAW_THERAPEE_VERSION }} AppImage
+  become: true
+  get_url:
+    url: "https://rawtherapee.com/shared/builds/linux/RawTherapee_{{ RAW_THERAPEE_VERSION }}.AppImage"
+    dest: "/usr/local/bin/RawTherapee.AppImage"
+    mode: 0755

@@ -1,0 +1,15 @@
+---
+
+- name: Install Python development tools
+  pacman:
+    name:
+      - python-pip
+    state: present
+  become: true
+
+- name: Install Python packages
+  pip:
+    name:
+      - python-language-server
+    state: present
+  become: true

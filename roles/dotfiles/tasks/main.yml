@@ -1,0 +1,27 @@
+---
+
+- name: Create projects directory
+  file:
+    path: "{{ HOME_DIR }}/Projects"
+    state: directory
+
+- name: Check if dotfiles exists
+  stat:
+    path: "{{ HOME_DIR }}/Projects/dotfiles"
+  register: dotfiles
+
+- debug:
+    msg: "Dotfiles exists, nothing todo here..."
+  when: dotfiles.stat.exists == True
+
+- name: Clone dotfiles
+  git:
+    repo: https://github.com/janbaer/dotfiles.git
+    dest: "{{ HOME_DIR }}/Projects/dotfiles"
+  when: dotfiles.stat.exists == False
+
+- name: Sync dotfiles
+  command: "./sync.sh"
+  args:
+    chdir: "{{ HOME_DIR }}/Projects/dotfiles"
+  when: dotfiles.stat.exists == False

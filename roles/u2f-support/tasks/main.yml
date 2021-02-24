@@ -1,0 +1,19 @@
+---
+
+- name: Create directory where the u2f rules file should be copied
+  become: true
+  file:
+    path: /etc/udev/rules.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Copy u2f-rules to be make Linux to detect my KEY-ID u2f usb dongle
+  become: true
+  copy:
+    src: ./../files/etc/udev/rules.d/70-u2f.rules
+    dest: /etc/udev/rules.d/70-u2f.rules
+    owner: root
+    group: root
+    mode: 0644  # u=rw,g=r,o=r

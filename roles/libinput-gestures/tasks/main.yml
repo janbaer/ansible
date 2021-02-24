@@ -1,0 +1,15 @@
+---
+
+- name: install packages from aur
+  become_user: "{{ USER_NAME }}"
+  aur:
+    use: yay
+    name:
+      - libinput-gestures
+
+- name: add user to input group
+  become: true
+  user:
+    name: '{{ USER_NAME }}'
+    groups: [input]
+    append: true

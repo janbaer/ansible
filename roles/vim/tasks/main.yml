@@ -1,0 +1,48 @@
+---
+
+- name: Create required directories
+  file:
+    path: "{{ HOME_DIR }}/.vim/{{item}}"
+    state: directory
+  with_items:
+    - undo
+    - spell
+    - autoload
+    - plugged
+
+- name: Create config dir for cog
+  file:
+    path: "{{ HOME_DIR }}/.config/cog"
+    state: directory
+
+- name: Download vim plugin manager Plug
+  get_url:
+    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    dest: "{{ HOME_DIR }}/.vim/autoload/plug.vim"
+
+- name: Download Papercolor theme to suppress error while installing plugins
+  git:
+    repo: https://github.com/NLKNguyen/papercolor-theme.git
+    dest: "{{ HOME_DIR }}/.vim/plugged/papercolor-theme"
+
+- name: Download files for German spell checking
+  get_url:
+    url: "http://ftp.vim.org/vim/runtime/spell/{{item}}"
+    dest: "{{ HOME_DIR }}/.vim/spell"
+  with_items:
+    - de.utf-8.spl
+    - de.utf-8.sug
+
+- name: Install and update Vim plugins
+  command: "vim -e -s -S '{{ HOME_DIR }}/.vimrc' -c PlugInstall -c qa"
+  register: verification
+  changed_when: verification.rc == 1
+  failed_when: verification.rc not in [0,1]
+
+- name: Install and update Go binaries
+  command: "vim -e -s -S '{{ HOME_DIR }}/.vimrc' -c GoInstallBinaries -c qa"
+  environment:
+    PATH: "{{ lookup('env', 'PATH') }}:{{ GO_INSTALL_PATH }}/bin"
+  register: verification
+  changed_when: verification.rc == 1
+  failed_when: verification.rc not in [0,1]

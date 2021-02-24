@@ -1,0 +1,10 @@
+---
+
+- name: Backup my home dir every day
+  become_user: "root"
+  cron:
+    name: "rsync-{{ HOST_NAME }}"
+    minute: "0"
+    hour: "14,19"
+    job: "JABASOFT_DS_SSH_PORT=26 /home/jan/bin/rsync-{{ HOST_NAME }}.sh > /var/log/cron-log.txt"
+  tags: cron

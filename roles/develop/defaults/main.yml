@@ -1,0 +1,9 @@
+---
+
+GO_VERSION: "1.16"
+GO_ARCHIVE_NAME: "go{{ GO_VERSION }}.linux-amd64.tar.gz"
+GO_INSTALL_PATH: "/usr/local/go"
+GO_BIN_PATH: "/usr/local/go/bin/go"
+
+NODE_VERSION: "15.10.0"
+NVM_DIR: "{{ HOME_DIR }}/.nvm"

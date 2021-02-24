@@ -1,0 +1,23 @@
+---
+
+- name: Update pacman cache
+  become: true
+  pacman:
+    update_cache: yes
+
+- name: Update pacman package lists
+  become: true
+  command: /usr/bin/pacman -Syy --noconfirm
+
+- name: Install all common packages
+  become: true
+  pacman:
+    name: "{{COMMON_PACKAGES}}"
+    state: present
+    force: false
+
+- name: Install RawTherapee
+  include_tasks: ./raw-therapee.yml
+
+- name: Download and Install youtube-dl
+  include_tasks: ./youtube-dl.yml

@@ -1,0 +1,23 @@
+---
+
+- name: Install tmux
+  become: true
+  pacman:
+    name: tmux
+
+- name: Create tmux config dir
+  file:
+    path: "{{ HOME_DIR }}/.tmux"
+    state: directory
+
+- name: Download plugin tpm
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ HOME_DIR }}/.tmux/plugins/tpm"
+    archive: /tmp/tpm.zip
+
+- name: Download plugin tmux-resurrect
+  git:
+    repo: https://github.com/tmux-plugins/tmux-resurrect
+    dest: "{{ HOME_DIR }}/.tmux/plugins/tmux-resurrect"
+    archive: /tmp/tmux-resurrect.zip

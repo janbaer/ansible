@@ -1,0 +1,27 @@
+---
+
+# Provisioning for all hosts in inventory
+- hosts: all
+  roles:
+    - {role: base-system, tags: [base]}
+    - {role: config-files, tags: [config-files]}
+    - {role: cron-jobs, tags: [cron, cron-jobs]}
+    - {role: develop, tags: [develop, nodejs]}
+    - {role: docker, tags: [docker]}
+    - {role: i3, tags: [i3]}
+    - {role: tmux, tags: [tmux]}
+    - {role: zsh, tags: [zsh]}
+    - {role: ssh-key, tags: [ssh, ssh-key]}
+    - {role: vim, tags: [vim]}
+    - {role: dotfiles, tags: [dotfiles]}
+  tags: [all]
+
+- hosts: desktop_pcs
+  roles:
+    - {role: kvm, tags: [kvm]}
+    - {role: u2f-support, tags: [u2f]}
+
+- hosts: notebooks
+  roles:
+    - {role: libinput-gestures, tags: [libinput, touchpad]}
+    - {role: u2f-support, tags: [u2f]}

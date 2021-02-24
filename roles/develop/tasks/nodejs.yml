@@ -1,0 +1,71 @@
+---
+
+- name: Check if nvm directory exists
+  stat:
+    path: "{{ NVM_DIR  }}"
+  register: NVM_DIR_CHECK
+
+- name: Create nvm directory
+  file:
+    path: "{{ NVM_DIR  }}"
+    state: directory
+  when: NVM_DIR_CHECK.stat.exists == False
+
+- name: Install nvm
+  shell: >
+    curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | sh
+    creates=/home/{{ USER_NAME }}/.nvm/nvm.sh
+  environment:
+    NVM_DIR: "{{ NVM_DIR }}"
+  when: NVM_DIR_CHECK.stat.exists == False
+
+- name: Check if nvm exists
+  stat:
+    path: "{{ NVM_DIR  }}/nvm.sh"
+  register: NVM_CHECK
+
+- name: Make nvm.sh executable
+  file:
+    path: "{{ NVM_DIR }}/nvm.sh"
+    state: touch
+    mode: 0755
+  when: NVM_CHECK.stat.exists == true
+
+- name: Check if Node.js is installed and which version
+  block:
+    - name: Check if node is installed at all
+      command: "which node"
+      register: NODE_IS_INSTALLED
+
+    - name: Check installed Node.js version
+      command: "node --version"
+      register: NODE_CHECK_VERSION
+      when: NODE_IS_INSTALLED.rc == 0
+
+    - name: Install Node.js version {{ NODE_VERSION }}
+      shell: >
+        /usr/bin/bash -c "source {{ NVM_DIR }}/nvm.sh && nvm install {{ NODE_VERSION }} && nvm alias default {{ NODE_VERSION }}"
+        creates=/home/{{ USER_NAME }}/.nvm/alias
+      environment:
+        NVM_DIR: "{{ NVM_DIR }}"
+      when: NODE_IS_INSTALLED.rc == 1 or not NODE_VERSION in NODE_CHECK_VERSION.stdout
+  ignore_errors: yes
+  when: NVM_CHECK.stat.exists == True
+
+- name: Install yarn
+  become: true
+  pacman:
+    name:
+      - yarn
+    state: present
+
+- name: Install required global npm modules
+  command: "/usr/bin/bash -c {{ NVM_DIR }}/nvm.sh && node install -g {{ item }}"
+  with_items:
+    - eslint
+    - google-translate-cli
+    - live-server
+    - ndb
+    - typescript
+  environment:
+    PATH: $PATH:{{ NVM_DIR }}

@@ -1,0 +1,32 @@
+---
+- name: Install basic development tools
+  become: true
+  pacman:
+    name:
+      - "base-devel"
+      - "cmake"
+      - "ctags"         # Its required for the tags plugin in VIM
+      - "gitg"          # GUI for Git
+      - "highlight"     # Higlighting sourcecode
+      - "jq"            # Tool for querying json in the commandline
+      - "httpie"        # My favorite tools for HTTP request in the commandline
+      - "meld"          # Difftool with UI
+    state: present
+
+- name: Install developer packages from aur
+  aur:
+    use: yay
+    name:
+      - git-extras
+      - http-prompt
+
+- name: Install Golang
+  include_tasks: ./go.yml
+  tags: [golang]
+
+- name: Install NodeJS
+  include_tasks: ./nodejs.yml
+  tags: [nodejs]
+
+- name: Install Python DevEnv
+  include_tasks: ./python.yml

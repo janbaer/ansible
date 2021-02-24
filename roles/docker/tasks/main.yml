@@ -1,0 +1,29 @@
+---
+
+- name: Install docker & friends
+  become: true
+  pacman:
+    name:
+      - docker
+      - docker-compose
+      - python-docker
+
+- name: Ensure the docker group exists
+  become: true
+  group:
+    name: docker
+    state: present
+
+- name: Add user to docker group
+  become: true
+  user:
+    name: "{{ USER_NAME }}"
+    groups: [docker]
+    append: true
+
+- name: Enable docker service
+  become: true
+  service:
+    name: docker
+    enabled: true
+    state: started

@@ -1,0 +1,22 @@
+---
+
+- name: Create .ssh dir if not exists
+  file:
+    path: "{{ HOME_DIR }}/.ssh"
+    state: directory
+
+- name: Copy encrypted id_rsa file
+  copy:
+    src: id_rsa
+    dest: "{{ HOME_DIR }}/.ssh/id_rsa"
+    owner: "{{ USER_NAME }}"
+    group: "{{ USER_NAME }}"
+    mode: 0600
+
+- name: Copy id_rsa.pub file
+  copy:
+    src: id_rsa.pub
+    dest: "{{ HOME_DIR }}/.ssh/id_rsa.pub"
+    owner: "{{ USER_NAME }}"
+    group: "{{ USER_NAME }}"
+    mode: 0644

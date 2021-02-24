@@ -1,0 +1,17 @@
+---
+
+- name: Clone oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: "{{ HOME_DIR }}/.oh-my-zsh"
+    update: false
+
+- name: Clone zsh-autosuggestions
+  git:
+    repo: git://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ HOME_DIR }}/.zsh/zsh-autosuggestions"
+    update: false
+
+- name: set zsh as default shell
+  become: true
+  command: "chsh -s /usr/bin/zsh {{ USER_NAME }}"

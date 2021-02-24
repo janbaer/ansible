@@ -1,0 +1,49 @@
+---
+
+- name: Check if Go is installed at all
+  stat:
+    path: "{{ GO_BIN_PATH }}"
+  register: GO_IS_INSTALLED
+
+- name: Check Go version
+  command: "go version"
+  environment:
+    PATH: "{{ GO_INSTALL_PATH }}/bin"
+  register: GO_CHECK_VERSION
+  when: "GO_IS_INSTALLED.stat.exists"
+  changed_when: false
+  failed_when: false
+
+- name: Print Go version
+  debug:
+    msg: "Go {{ GO_VERSION }} is installed, not action is required."
+  when: "GO_IS_INSTALLED.stat.exists and GO_VERSION in GO_CHECK_VERSION.stdout"
+
+- name: Download Go archive
+  get_url:
+    url: "https://dl.google.com/go/{{ GO_ARCHIVE_NAME }}"
+    dest: "/tmp/{{ GO_ARCHIVE_NAME }}"
+    mode: 0440
+  when: "not GO_IS_INSTALLED.stat.exists or GO_VERSION not in GO_CHECK_VERSION.stdout"
+
+- name: Remove any previous existing Go installation
+  become: true
+  file:
+    name: "{{ GO_INSTALL_PATH }}"
+    state: absent
+  when: "not GO_IS_INSTALLED.stat.exists or GO_VERSION not in GO_CHECK_VERSION.stdout"
+
+- name: Install Golang
+  become: true
+  unarchive:
+    src: "/tmp/{{ GO_ARCHIVE_NAME }}"
+    dest: "/usr/local"
+  when: "not GO_IS_INSTALLED.stat.exists or GO_VERSION not in GO_CHECK_VERSION.stdout"
+
+- name: Install tools with Go
+  become: true
+  command: "go get -u {{ item }}"
+  environment:
+    PATH: "{{ GO_INSTALL_PATH }}/bin"
+  with_items:
+    - golang.org/x/tools/cmd/godoc

@@ -1,0 +1,31 @@
+---
+
+- name: Install i3
+  become: true
+  pacman:
+    name:
+      - xorg
+      - conky
+      - compton
+      - i3-gaps
+      - i3lock
+      - i3status
+      - feh
+      - rofi
+      - dmenu
+      - clipit
+      - feh
+      - blueman
+      - pasystray
+      - conky
+      - volumeicon
+      - powerline
+      - dunst
+      - xcompmgr
+    state: present
+
+- name: Install packages from aur
+  aur:
+    use: yay
+    name:
+      - rofi-greenclip
