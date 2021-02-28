@@ -1,0 +1,40 @@
+---
+
+# See also https://linuxhint.com/install_configure_kvm_archlinux/
+
+- name: Install required packages for using KVM
+  become: true
+  pacman:
+    name:
+      - qemu
+      - virt-manager
+      - virt-viewer
+      - dnsmasq
+      - vde2
+      - bridge-utils
+      - openbsd-netcat
+      - ebtables
+      - iptables
+      - libguestfs
+    state: present
+
+- name: Install additional packages from AUR
+  aur:
+    use: yay
+    name:
+      - libguestfs
+
+- name: Libvirtd systemd service
+  service:
+    name: libvirtd
+    enabled: true
+    state: started
+
+- name: add user to libvirt group
+  become: true
+  user:
+    name: '{{ USER_NAME }}'
+    groups: [libvirt]
+    append: true
+  notify:
+    - Restart libvirtd service
