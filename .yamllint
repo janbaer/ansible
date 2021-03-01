@@ -9,3 +9,5 @@ yaml-files:
 
 rules:
   line-length: disable
+  truthy:
+    allowed-values: ['true', 'false', 'yes', 'no']

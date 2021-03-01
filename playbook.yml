@@ -12,8 +12,8 @@
     - {role: tmux, tags: [tmux]}
     - {role: zsh, tags: [zsh]}
     - {role: ssh-key, tags: [ssh, ssh-key]}
-    - {role: vim, tags: [vim]}
     - {role: dotfiles, tags: [dotfiles]}
+    - {role: vim, tags: [vim]}
   tags: [all]
 
 - hosts: desktop_pcs
