@@ -45,7 +45,6 @@
     - name: Install Node.js version {{ NODE_VERSION }}
       shell: >
         /usr/bin/bash -c "source {{ NVM_DIR }}/nvm.sh && nvm install {{ NODE_VERSION }} && nvm alias default {{ NODE_VERSION }}"
-        creates=/home/{{ USER_NAME }}/.nvm/alias
       environment:
         NVM_DIR: "{{ NVM_DIR }}"
       when: NODE_IS_INSTALLED.rc == 1 or not NODE_VERSION in NODE_CHECK_VERSION.stdout
@@ -55,17 +54,19 @@
 - name: Install yarn
   become: true
   pacman:
-    name:
-      - yarn
+    name: yarn
     state: present
 
 - name: Install required global npm modules
-  command: "/usr/bin/bash -c {{ NVM_DIR }}/nvm.sh && node install -g {{ item }}"
+  npm:
+    name: "{{ item }}"
+    global: true
+    state: present
   with_items:
     - eslint
     - google-translate-cli
     - live-server
-    - ndb
     - typescript
+    # - ndb
   environment:
-    PATH: $PATH:{{ NVM_DIR }}
+    PATH: $PATH:{{ NVM_DIR }}/versions/node/v{{ NODE_VERSION }}/bin/

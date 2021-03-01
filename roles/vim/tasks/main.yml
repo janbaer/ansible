@@ -35,6 +35,8 @@
 
 - name: Install and update Vim plugins
   command: "vim -e -s -S '{{ HOME_DIR }}/.vimrc' -c PlugInstall -c qa"
+  environment:
+    VIM_BACKGROUND: "light"
   register: verification
   changed_when: verification.rc == 1
   failed_when: verification.rc not in [0,1]
