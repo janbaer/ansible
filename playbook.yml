@@ -14,6 +14,7 @@
     - {role: ssh-key, tags: [ssh, ssh-key]}
     - {role: dotfiles, tags: [dotfiles]}
     - {role: vim, tags: [vim]}
+    - {role: vscode, tags: [vscode]}
   tags: [all]
 
 - hosts: desktop_pcs

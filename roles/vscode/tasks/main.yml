@@ -1,0 +1,25 @@
+---
+
+- name: Install vscode
+  become: true
+  pacman:
+    name: code
+    state: present
+
+- name: Install vscode extensions
+  command: code-oss --install-extension {{item}}
+  with_items:
+    - golang.Go
+    - coenraads.bracket-pair-colorizer
+    - orta.vscode-jest
+    - kavod-io.vscode-jest-test-adapter
+    - ryanluker.vscode-coverage-gutters
+    - hbenl.vscode-test-explorer
+    - eamodio.gitlens
+    # - huizhou.githd
+    - mhutchie.git-graph
+    # - howardzuo.vscode-git-blamer
+    - vscoss.vscode-ansible
+    - christian-kohler.path-intellisense
+    - vscodevim.vim
+    - emmanuelbeziat.vscode-great-icons
