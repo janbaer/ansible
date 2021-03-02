@@ -1,0 +1,5 @@
+---
+
+NVM_DIR: "{{ HOME_DIR }}/.nvm"
+
+NODE_VERSION: "15.10.0"

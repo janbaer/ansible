@@ -19,14 +19,3 @@
     name:
       - git-extras
       - http-prompt
-
-- name: Install Golang
-  include_tasks: ./go.yml
-  tags: [golang]
-
-- name: Install NodeJS
-  include_tasks: ./nodejs.yml
-  tags: [nodejs]
-
-- name: Install Python DevEnv
-  include_tasks: ./python.yml
