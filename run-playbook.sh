@@ -5,7 +5,7 @@ if [ $# -eq 0 ]; then
   pamac install --no-confirm ansible yay-bin ansible-aur-git
 fi
 
-HOST=$(cat /etc/hostname)
+HOST=$(cat /etc/hostname | tr '[:upper:]' '[:lower:]')
 ANSIBLE_STDOUT_CALLBACK=yaml
 
 echo "Run playbook playbook.yml on machine ${HOST}"
