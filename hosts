@@ -11,6 +11,11 @@ check24-notebook-janbaer ansible_connection=local
 [virtual_pcs]
 jan-vpc1 ansible_connection=local
 
+[private_pcs]
+jan-vpc1
+jabasoft-linux-pc1
+jabasoft-mbx
+
 [remote_hosts:vars]
 ansible_connection=ssh
 ansible_private_key_file=~/.ssh/rsync-key

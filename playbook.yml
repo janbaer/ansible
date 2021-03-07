@@ -18,6 +18,10 @@
     - {role: vim, tags: [vim]}
     - {role: vscode, tags: [vscode]}
 
+- hosts: private_pcs
+  roles:
+    - {role: gpg, tags: [gpg, pass]}
+
 - hosts: desktop_pcs
   roles:
     - {role: kvm, tags: [kvm]}

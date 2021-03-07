@@ -1,0 +1,31 @@
+---
+
+- name: Copy Gpg files to Home folder
+  copy:
+    src: "{{ item }}"
+    dest: "{{ HOME_DIR }}/{{ item }}"
+    owner: "{{ USER_NAME }}"
+    group: "{{ USER_NAME }}"
+  with_items:
+    - jan.asc
+
+- name: Check if my gpg key was imported before
+  shell: "gpg --list-keys"
+  register: GPG_KEYS
+  ignore_errors: yes
+
+- name: Import my gpg key
+  shell: "gpg --batch --passphrase={{ GPG_PASSWORD }} --import {{ HOME_DIR }}/jan.asc "
+  when: "GPG_KEYS.stdout is not search(USER_NAME)"
+
+- name: Delete Gpg files after import
+  file:
+    name: "{{ HOME_DIR }}/{{ item }}"
+    state: absent
+  with_items:
+    - jan.asc
+
+- name: Clone my passwords Git repo
+  git:
+    repo: ssh://jan@JABASOFT-DS/volume1/homes/jan/git/pass
+    dest: ~/.password-store
