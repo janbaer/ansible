@@ -20,3 +20,11 @@
     owner: "{{ USER_NAME }}"
     group: "{{ USER_NAME }}"
     mode: 0644
+
+- name: Copy encrypted known_hosts file
+  copy:
+    src: known_hosts
+    dest: "{{ HOME_DIR }}/.ssh/known_hosts"
+    owner: "{{ USER_NAME }}"
+    group: "{{ USER_NAME }}"
+    mode: 0600
