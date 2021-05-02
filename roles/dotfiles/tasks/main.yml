@@ -1,5 +1,7 @@
 ---
 
+- include_tasks: ./copy-smb-credentials.yml
+
 - name: Create projects directory
   file:
     path: "{{ HOME_DIR }}/Projects"
@@ -25,3 +27,4 @@
   args:
     chdir: "{{ HOME_DIR }}/Projects/dotfiles"
   when: dotfiles.stat.exists == False
+
