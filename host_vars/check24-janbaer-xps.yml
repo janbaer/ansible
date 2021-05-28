@@ -2,3 +2,5 @@
 
 USER_NAME: "janbaer"
 IS_NOTEBOOK: true
+
+NODE_VERSION: "14.17.0"
