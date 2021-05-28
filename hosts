@@ -6,7 +6,7 @@ jabasoft-ds ansible_host=JABASOFT-DS
 
 [notebooks]
 jabasoft-mbx ansible_connection=local
-check24-notebook-janbaer ansible_connection=local
+check24-janbaer-xps ansible_connection=local
 
 [virtual_pcs]
 jan-vpc1 ansible_connection=local
