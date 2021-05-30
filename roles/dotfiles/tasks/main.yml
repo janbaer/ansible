@@ -2,6 +2,18 @@
 
 - include_tasks: ./copy-smb-credentials.yml
 
+- name: Copy some dotfiles
+  template:
+    src: "{{ item.src }}"
+    dest: /home/{{ USER_NAME }}/{{ item.dest }}
+    owner: "{{ USER_NAME }}"
+    group: "{{ USER_NAME }}"
+    mode: 0640
+  with_items:
+    - { src: Xresources.j2, dest: .Xresources }
+    - { src: profile.j2, dest: .profile }
+
+
 - name: Create projects directory
   file:
     path: "{{ HOME_DIR }}/Projects"

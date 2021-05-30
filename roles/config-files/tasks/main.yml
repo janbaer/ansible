@@ -1,9 +1,9 @@
 ---
 
 - name: Copy Chromium-Flags config file with activated Scaling
-  copy:
-    src: chromium-flags.conf
+  template:
+    src: chromium-flags.conf.j2
     dest: /home/{{ USER_NAME }}/.config/chromium-flags.conf
     owner: "{{ USER_NAME }}"
     group: "{{ USER_NAME }}"
-    mode: 0644    # u=rw,g=r,o=r
+    mode: 0640
