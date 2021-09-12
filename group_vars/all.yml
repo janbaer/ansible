@@ -5,7 +5,7 @@ USER_NAME: "{{ lookup('env', 'USER') }}"
 HOME_DIR: "/home/{{ USER_NAME }}"
 HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 
-NODE_VERSION: "16.2.0"
+NODE_VERSION: "16.9.1"
 
 GO_VERSION: "1.16.4"
 
