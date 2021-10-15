@@ -1,8 +1,15 @@
 ---
 
-- name: Install Youtube-dl from the original location
+# - name: Install Youtube-dl from the original location
+#   become: true
+#   get_url:
+#     url: "https://yt-dl.org/downloads/latest/youtube-dl"
+#     dest: "/usr/local/bin/youtube-dl"
+#     mode: 0755
+
+- name: Install yt-dlp (fork of Youtube-dl) from the original location
   become: true
   get_url:
-    url: "https://yt-dl.org/downloads/latest/youtube-dl"
-    dest: "/usr/local/bin/youtube-dl"
+    url: "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp"
+    dest: "/usr/local/bin/yt-dlp"
     mode: 0755
