@@ -67,6 +67,7 @@
     - google-translate-cli
     - live-server
     - typescript
-    # - ndb
+    - npkill
+    - npm-check
   environment:
     PATH: $PATH:{{ NVM_DIR }}/versions/node/v{{ NODE_VERSION }}/bin/
