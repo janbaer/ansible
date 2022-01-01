@@ -14,6 +14,8 @@
     - photo
     - setup
     - video
+    - tuxedo
+    - paperless
 
 - name: Add mounts for NAS-shares
   become: true
@@ -27,3 +29,5 @@
     - "//JABASOFT-DS/video 	/media/jan/video cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
     - "//JABASOFT-DS/daten 	/media/jan/daten cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
     - "//JABASOFT-DS/setup 	/media/jan/setup cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
+    - "jabasoft-pve:/data/paperless/consume /media/jan/paperless nfs nfsvers=4,rw,noauto 0 0"
+    - "https://mytuxedo.de/remote.php/dav/files/janbaer/ /media/jan/tuxedo davfs user,rw,noauto 0 0"
