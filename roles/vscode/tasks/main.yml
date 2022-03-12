@@ -24,3 +24,4 @@
     - vscodevim.vim
     - emmanuelbeziat.vscode-great-icons
     - svelte.svelte-vscode
+  ignore_errors: yes

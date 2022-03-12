@@ -11,11 +11,13 @@ check24-janbaer-xps ansible_connection=local
 
 [virtual_pcs]
 jan-vpc1 ansible_connection=local
+jabasoft-vm-manjaro ansible_connection=local
 
 [private_pcs]
-jan-vpc1
 jabasoft-linux-pc1
 jabasoft-mbx
+jan-vpc1
+jabasoft-vm-manjaro
 
 [remote_hosts:vars]
 ansible_connection=ssh

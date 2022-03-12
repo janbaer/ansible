@@ -10,8 +10,8 @@
     group: "{{ USER_NAME }}"
     mode: 0640
   with_items:
-    - { src: Xresources.j2, dest: .Xresources }
-    - { src: profile.j2, dest: .profile }
+    - {src: Xresources.j2, dest: .Xresources}
+    - {src: profile.j2, dest: .profile}
 
 
 - name: Create projects directory
@@ -39,4 +39,3 @@
   args:
     chdir: "{{ HOME_DIR }}/Projects/dotfiles"
   when: dotfiles.stat.exists == False
-

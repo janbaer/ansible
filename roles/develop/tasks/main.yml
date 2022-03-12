@@ -17,5 +17,5 @@
   aur:
     use: yay
     name:
-      - git-extras
-      - http-prompt
+      - aur/git-extras
+  ignore_errors: yes

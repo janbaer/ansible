@@ -1,0 +1,5 @@
+---
+
+GO_ARCHIVE_NAME: "go{{ GO_VERSION }}.linux-amd64.tar.gz"
+GO_INSTALL_PATH: "/usr/local/go"
+GO_BIN_PATH: "/usr/local/go/bin/go"

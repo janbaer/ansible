@@ -32,3 +32,11 @@ ansible-pull --limit $(cat /etc/hostname) --ask-vault-password --ask-become-pass
 ```
 
 After this it's necessary to loggoff and choose i3 as window manager before login again.
+
+In case you want to test the project before pushing it to GitHub on a fresh installed system, you can very easily copy the project with one simple command to the target system.
+
+```
+rsync -avP ~/Projects/ansible/ jan@{ip-address}:/home/jan/ansible
+```
+
+You need to activate the `sshd` service on the target system before.

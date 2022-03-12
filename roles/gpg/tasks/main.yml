@@ -25,6 +25,13 @@
   with_items:
     - jan.asc
 
+- name: Add ip-address of JABASOFT-DS to /etc/hosts
+  become: true
+  lineinfile:
+    dest: /etc/hosts
+    line: "{{ JABASOFT_DS_IP_ADDRESS}} JABASOFT-DS"
+    state: present
+
 - name: Clone my passwords Git repo
   git:
     repo: ssh://jan@JABASOFT-DS/volume1/homes/jan/git/pass

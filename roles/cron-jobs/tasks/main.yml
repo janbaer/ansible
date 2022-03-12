@@ -6,5 +6,5 @@
     name: "rsync-{{ HOST_NAME }}"
     minute: "0"
     hour: "14,19"
-    job: "JABASOFT_DS_SSH_PORT=26 /home/jan/bin/rsync-{{ HOST_NAME }}.sh > /var/log/cron-log.txt"
+    job: "JABASOFT_DS_SSH_PORT={{ JABASOFT_DS_SSH_PORT }} /home/jan/bin/rsync-{{ HOST_NAME }}.sh > /var/log/cron-log.txt"
   tags: cron

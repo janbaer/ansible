@@ -5,7 +5,7 @@
   pacman:
     name:
       - xorg
-      - conky
+      # - conky
       - compton
       - i3-gaps
       - i3lock
@@ -17,7 +17,6 @@
       - feh
       - blueman
       - pasystray
-      - conky
       - volumeicon
       - powerline
       - dunst
@@ -29,3 +28,4 @@
     use: yay
     name:
       - rofi-greenclip
+  ignore_errors: yes

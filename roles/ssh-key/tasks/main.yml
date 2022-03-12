@@ -5,26 +5,25 @@
     path: "{{ HOME_DIR }}/.ssh"
     state: directory
 
-- name: Copy encrypted id_rsa file
+- name: Copy encrypted files to .ssh
   copy:
-    src: id_rsa
-    dest: "{{ HOME_DIR }}/.ssh/id_rsa"
+    src: "{{ item }}"
+    dest: "{{ HOME_DIR }}/.ssh/{{ item }}"
     owner: "{{ USER_NAME }}"
     group: "{{ USER_NAME }}"
     mode: 0600
+  with_items:
+    - id_rsa
+    - id_ed25519
+    - known_hosts
 
-- name: Copy id_rsa.pub file
+- name: Copy pub keys to .ssh
   copy:
-    src: id_rsa.pub
-    dest: "{{ HOME_DIR }}/.ssh/id_rsa.pub"
+    src: "{{ item }}"
+    dest: "{{ HOME_DIR }}/.ssh/{{ item }}"
     owner: "{{ USER_NAME }}"
     group: "{{ USER_NAME }}"
     mode: 0644
-
-- name: Copy encrypted known_hosts file
-  copy:
-    src: known_hosts
-    dest: "{{ HOME_DIR }}/.ssh/known_hosts"
-    owner: "{{ USER_NAME }}"
-    group: "{{ USER_NAME }}"
-    mode: 0600
+  with_items:
+    - id_rsa.pub
+    - id_ed25519.pub

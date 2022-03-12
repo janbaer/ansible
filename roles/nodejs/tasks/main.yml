@@ -71,3 +71,4 @@
     - npm-check
   environment:
     PATH: $PATH:{{ NVM_DIR }}/versions/node/v{{ NODE_VERSION }}/bin/
+  ignore_errors: yes
