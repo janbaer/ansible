@@ -14,6 +14,11 @@
   changed_when: false
   failed_when: false
 
+- name: Print installed Go version
+  debug:
+    msg: "Go {{ GO_CHECK_VERSION.stdout }} is installed, but in a lower version, we need to update..."
+  when: "GO_IS_INSTALLED.stat.exists and GO_VERSION not in GO_CHECK_VERSION.stdout"
+
 - name: Print Go version
   debug:
     msg: "Go {{ GO_VERSION }} is installed, not action is required."
@@ -42,8 +47,8 @@
 
 - name: Install tools with Go
   become: true
-  command: "go get -u {{ item }}"
+  command: "go install {{ item }}"
   environment:
     PATH: "{{ GO_INSTALL_PATH }}/bin"
   with_items:
-    - golang.org/x/tools/cmd/godoc
+    - golang.org/x/tools/...@latest

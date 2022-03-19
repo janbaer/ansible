@@ -7,7 +7,7 @@ HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 
 NODE_VERSION: "17.6.0"
 
-GO_VERSION: "1.17.8"
+GO_VERSION: "1.18"
 
 RAW_THERAPEE_VERSION: "5.8"
 
