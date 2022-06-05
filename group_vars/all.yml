@@ -16,20 +16,25 @@ COMMON_PACKAGES:
   - alsa-tools              # Tools for managing audio output
   - arandr                  # GUI for selecting multiple monitors location and resolution
   - arch-audit              # Searching for vulnerable arch-packages
+  - btop                    # A monitor of system resources, bpytop ported to C++
   - curl                    # Http-Requests from the commandline
   - cronie                  # Running cron-jobs
   - chromium                # My favorite browser
-  # - davfs2                  # Mounting DAV filesystem
+  - davfs2                  # Mounting DAV filesystem - Important for mounting mailbox.org Drive
   - easytag                 # Managing id3 tags of MP3 files
   - evince                  # Another Pdf-Viewer
   - exa                     # A nice replacement for the ls command
   - fzf                     # Fuzzyfinder for the commandline
   - flameshot               # A better tool for making screenshots
+  - glow                    # Command-line markdown renderer
   - gopass                  # Passwordmanagement in the commandline (Better than pass)
   - gedit                   # The Gnome editor
+  - git-delta               # Syntax-highlighting pager for git and diff output
   - gvim                    # Vi IMproved, a programmer's text editor
   - htop                    # Better tool to show system resource usage in the commandline
   - inxi                    # Show hardware informations about my computer
+  - jc                      # Converts the output of popular command-line tools and file-types to JSON
+  - jq                      # Command-line JSON processor
   - keepassxc               # Manage my passwords with a GUI
   - keychain                # re-use ssh-agent and/or gpg-agent between logins
   - kitty                   # Terminal with tranparency and glyph fonts
