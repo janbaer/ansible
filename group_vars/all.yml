@@ -5,9 +5,9 @@ USER_NAME: "{{ lookup('env', 'USER') }}"
 HOME_DIR: "/home/{{ USER_NAME }}"
 HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 
-NODE_VERSION: "17.6.0"
+NODE_VERSION: "18.3.0"
 
-GO_VERSION: "1.18"
+GO_VERSION: "1.18.3"
 
 RAW_THERAPEE_VERSION: "5.8"
 

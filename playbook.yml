@@ -32,3 +32,4 @@
   roles:
     - {role: libinput-gestures, tags: [libinput, touchpad]}
     - {role: u2f-support, tags: [u2f]}
+    - {role: huawei-soundfix, tags: [huawei]}
