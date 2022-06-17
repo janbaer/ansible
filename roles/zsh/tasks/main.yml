@@ -6,6 +6,12 @@
     dest: "{{ HOME_DIR }}/.oh-my-zsh"
     update: false
 
+- name: Clone fzf-zsh-plugin
+  git:
+    repo: git://github.com/unixorn/fzf-zsh-plugin.git
+    dest: "{{ HOME_DIR }}/.oh-my-zsh/plugins/fzf-zsh-plugin"
+    update: false
+
 - name: Clone zsh-autosuggestions
   git:
     repo: git://github.com/zsh-users/zsh-autosuggestions
