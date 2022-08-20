@@ -21,3 +21,9 @@
 
 - name: Download and Install youtube-dl
   include_tasks: ./youtube-dl.yml
+
+- name: Download and Install Obsidian
+  include_tasks: ./obsidian.yml
+
+- name: Activate support for notifications
+  include_tasks: ./notifications.yml
