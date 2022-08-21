@@ -2,9 +2,20 @@
 
 - name: Backup my home dir every day
   become_user: "root"
+  become: true
   cron:
     name: "rsync-{{ HOST_NAME }}"
     minute: "0"
     hour: "14,19"
-    job: "JABASOFT_DS_SSH_PORT={{ JABASOFT_DS_SSH_PORT }} /home/jan/bin/rsync-{{ HOST_NAME }}.sh > /var/log/cron-log.txt"
+    job: "JABASOFT_DS_SSH_PORT={{ JABASOFT_DS_SSH_PORT }} /home/jan/bin/rsync-{{ HOST_NAME }}.sh > /var/log/cron-{{ HOST_NAME }}-log.txt"
+  tags: cron
+
+- name: Backup mailbox-drive with rsync
+  become_user: "root"
+  become: true
+  cron:
+    name: "rsync-mailbox-drive"
+    minute: "6"
+    hour: "14,19"
+    job: "JABASOFT_DS_SSH_PORT={{ JABASOFT_DS_SSH_PORT }} /home/jan/bin/rsync-mailbox-drive.sh > /var/log/cron-mailbox-drive-log.txt"
   tags: cron
