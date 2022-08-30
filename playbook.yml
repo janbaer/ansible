@@ -22,6 +22,7 @@
 - hosts: private_pcs
   roles:
     - {role: gpg, tags: [gpg, pass]}
+    - {role: borg, tags: [borg]}
 
 - hosts: desktop_pcs
   roles:
