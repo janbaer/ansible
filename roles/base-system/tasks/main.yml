@@ -16,6 +16,12 @@
     state: present
     force: false
 
+- name: Install packages from aur
+  aur:
+    use: yay
+    name: "{{ AUR_PACKAGES }}"
+
+  ignore_errors: yes
 - name: Install RawTherapee
   include_tasks: ./raw-therapee.yml
 
@@ -24,6 +30,3 @@
 
 - name: Download and Install Obsidian
   include_tasks: ./obsidian.yml
-
-- name: Activate support for notifications
-  include_tasks: ./notifications.yml

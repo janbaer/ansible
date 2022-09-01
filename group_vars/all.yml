@@ -21,7 +21,6 @@ COMMON_PACKAGES:
   - curl                    # Http-Requests from the commandline
   - cronie                  # Running cron-jobs
   - chromium                # My favorite browser
-  - davfs2                  # Mounting DAV filesystem - Important for mounting mailbox.org Drive
   - dunst                   # Simple notifications daemon https://wiki.archlinux.org/title/Dunst#Installation
   - easytag                 # Managing id3 tags of MP3 files
   - evince                  # Another Pdf-Viewer
@@ -67,6 +66,9 @@ COMMON_PACKAGES:
   - xsel                    # Commandlinetool for the clipboard
   - zathura                 # A Pdf viewer for the terminal
   - zathura-pdf-mupdf       # Plugin for Zahthura to show Pdf and Epubs
+
+AUR_PACKAGES:
+  - davfs2                  # Mounting DAV filesystem - Important for mounting mailbox.org Drive
 
 JABASOFT_DS_IP_ADDRESS: "192.168.178.21"
 JABASOFT_DS_SSH_PORT: 26
