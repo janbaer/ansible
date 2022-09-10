@@ -28,10 +28,10 @@ pamac install --no-confirm ansible ansible-aur-git yay-bin
 Now just run
 
 ```
-ansible-pull --limit $(cat /etc/hostname) --ask-vault-password --ask-become-pass --url https://github.com/janbaer/ansible.git playbook.yml
+ansible-pull --limit $(cat /etc/hostname) -e @group_vars/vault.yml --ask-vault-password --ask-become-pass --url https://github.com/janbaer/ansible.git playbook.yml
 ```
 
-After this it's necessary to loggoff and choose i3 as window manager before login again.
+After this it's necessary to logoff and choose i3 as window manager before login again.
 
 In case you want to test the project before pushing it to GitHub on a fresh installed system, you can very easily copy the project with one simple command to the target system.
 

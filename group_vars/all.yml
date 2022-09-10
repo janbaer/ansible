@@ -67,8 +67,7 @@ COMMON_PACKAGES:
   - zathura                 # A Pdf viewer for the terminal
   - zathura-pdf-mupdf       # Plugin for Zahthura to show Pdf and Epubs
 
-AUR_PACKAGES:
-  - davfs2                  # Mounting DAV filesystem - Important for mounting mailbox.org Drive
+AUR_PACKAGES: []
 
 JABASOFT_DS_IP_ADDRESS: "192.168.178.21"
 JABASOFT_DS_SSH_PORT: 26

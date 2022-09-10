@@ -1,0 +1,37 @@
+---
+
+- name: Install davfs2 package from aur
+  become: true
+  aur:
+    use: yay
+    name:
+      - davfs2
+  ignore_errors: false
+
+- name: Create mount directory for mailbox-drive
+  become: true
+  file:
+    path: "/media/{{ USER_NAME }}/{{ mailbox_drive_mount }}"
+    state: directory
+    owner: "{{ USER_NAME }}"
+    group: "{{ USER_NAME }}"
+
+- name: Copy davfs2 configuration file
+  become: true
+  copy:
+    src: "davfs2.conf"
+    dest: "/etc/davfs2/davfs2.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+
+- name: Add secret to davfs2 secrets file
+  lineinfile:
+    dest: "/home/{{ USER_NAME }}/.davfs2/secrets"
+    line: "/media/{{ USER_NAME }}/{{ mailbox_drive_mount }} {{ mailbox_drive_user }}@mailbox.org {{ mailbox_drive_password }}"
+
+- name: Add mount for mailbox-drive in fstab file
+  become: true
+  lineinfile:
+    dest: /etc/fstab
+    line: "https://dav.mailbox.org/servlet/webdav.infostore/Userstore /media/{{ USER_NAME }}/{{ mailbox_drive_mount }} davfs noauto,user,rw 0 0"

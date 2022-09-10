@@ -23,6 +23,7 @@
   roles:
     - {role: gpg, tags: [gpg, pass]}
     - {role: borg, tags: [borg]}
+    - {role: mailbox-drive, tags: [mailbox-drive]}
 
 - hosts: desktop_pcs
   roles:

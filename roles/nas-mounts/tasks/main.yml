@@ -8,13 +8,12 @@
     owner: "{{ USER_NAME }}"
     group: "{{ USER_NAME }}"
   with_items:
-    - daten
-    - home
-    - music
-    - photo
-    - setup
-    - video
-    - drive
+    - "daten"
+    - "home"
+    - "music"
+    - "photo"
+    - "setup"
+    - "video"
     - "pve/paperless"
     - "pve/music"
 
@@ -24,18 +23,17 @@
     state: started
     enabled: yes
 
-- name: Add mounts for NAS-shares
+- name: Add mounts for network-shares
   become: true
   lineinfile:
     dest: /etc/fstab
     line: "{{ item }}"
   with_items:
-    - "//JABASOFT-DS/homes/jan	/media/jan/home cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
-    - "//JABASOFT-DS/photo 	/media/jan/photo cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
-    - "//JABASOFT-DS/music 	/media/jan/music cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
-    - "//JABASOFT-DS/video 	/media/jan/video cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
-    - "//JABASOFT-DS/daten 	/media/jan/daten cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
-    - "//JABASOFT-DS/setup 	/media/jan/setup cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
+    - "//jabasoft-ds/homes/jan	/media/jan/home cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
+    - "//jabasoft-ds/photo 	/media/jan/photo cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
+    - "//jabasoft-ds/music 	/media/jan/music cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
+    - "//jabasoft-ds/video 	/media/jan/video cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
+    - "//jabasoft-ds/daten 	/media/jan/daten cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
+    - "//jabasoft-ds/setup 	/media/jan/setup cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
     # - "jabasoft-pve:/data/paperless/consume /media/jan/pve/paperless nfs nfsvers=4,rw,auto 0 0"
     - "jabasoft-pve:/data/metube/mp3 /media/jan/pve/music nfs nfsvers=4,rw,auto 0 0"
-    - "https://dav.mailbox.org/servlet/webdav.infostore/Userstore /media/jan/drive davfs noauto,user,rw 0 0"

@@ -10,4 +10,4 @@ ANSIBLE_STDOUT_CALLBACK=yaml
 
 echo "Run playbook playbook.yml on machine ${HOST}"
 
-ansible-playbook playbook.yml --limit=${HOST} --ask-become-pass --ask-vault-pass --diff "$@"
+ansible-playbook playbook.yml -e @group_vars/vault.yml --limit=${HOST} --ask-become-pass --ask-vault-pass --diff "$@"
