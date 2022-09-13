@@ -18,12 +18,12 @@
     - {role: dotfiles, tags: [dotfiles]}
     - {role: vim, tags: [vim]}
     - {role: vscode, tags: [vscode]}
+    - {role: mailbox-drive, tags: [mailbox-drive]}
 
 - hosts: private_pcs
   roles:
     - {role: gpg, tags: [gpg, pass]}
     - {role: borg, tags: [borg]}
-    - {role: mailbox-drive, tags: [mailbox-drive]}
 
 - hosts: desktop_pcs
   roles:
