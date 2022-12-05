@@ -17,6 +17,7 @@ COMMON_PACKAGES:
   - alsa-tools              # Tools for managing audio output
   - arandr                  # GUI for selecting multiple monitors location and resolution
   - arch-audit              # Searching for vulnerable arch-packages
+  - brave-browser           # Brave browser, alternative for Chromium with builtin sync and ad-block
   - btop                    # A monitor of system resources, bpytop ported to C++
   - curl                    # Http-Requests from the commandline
   - cronie                  # Running cron-jobs

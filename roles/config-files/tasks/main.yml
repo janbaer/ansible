@@ -6,4 +6,12 @@
     dest: /home/{{ USER_NAME }}/.config/chromium-flags.conf
     owner: "{{ USER_NAME }}"
     group: "{{ USER_NAME }}"
-    mode: 0640
+    mode: 0600
+
+- name: Copy Brave-Flags config file with activated Scaling
+  template:
+    src: brave-flags.conf.j2
+    dest: /home/{{ USER_NAME }}/.config/brave-flags.conf
+    owner: "{{ USER_NAME }}"
+    group: "{{ USER_NAME }}"
+    mode: 0600
