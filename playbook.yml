@@ -16,6 +16,7 @@
     - {role: zsh, tags: [zsh]}
     - {role: ssh-key, tags: [ssh, ssh-key]}
     - {role: dotfiles, tags: [dotfiles]}
+    - {role: rust, tags: [rust]}
     - {role: vim, tags: [vim]}
     - {role: vscode, tags: [vscode]}
     - {role: mailbox-drive, tags: [mailbox-drive]}
