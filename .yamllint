@@ -7,6 +7,9 @@ yaml-files:
   - '*.yml'
   - '.yamllint'
 
+ignore: |
+  vault.yml
+
 rules:
   line-length: disable
   truthy:
