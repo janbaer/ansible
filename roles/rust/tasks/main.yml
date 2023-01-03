@@ -21,7 +21,7 @@
   shell: /tmp/sh.rustup.rs -y
 
 - name: Check if rustc was installed successfully.
-  shell: /usr/bin/rustc --version
+  shell: "/home/{{USER_NAME}}/.cargo/bin/rustc --version"
   register: rustc_check
   changed_when: false
   failed_when: rustc_check.failed
