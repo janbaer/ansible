@@ -1,0 +1,13 @@
+---
+
+- name: Install 8s tool for the commandline
+  become: true
+  pacman:
+    name:
+      - "kubectl"   # Communicate with K8s from the command line
+      - "k9s"       # TUI for managing K8s clusters and pods
+      - "kubectx"   # Switching between multips k8s servers
+      - "kubens"    # Define the current default namespace
+      - "stern"     # Multi pod and container log tailing for Kubernetes
+    state: present
+

@@ -5,11 +5,11 @@ USER_NAME: "{{ lookup('env', 'USER') }}"
 HOME_DIR: "/home/{{ USER_NAME }}"
 HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 
-NODE_VERSION: "18.3.0"
+NODE_VERSION: "18.13.0"
 
-GO_VERSION: "1.18.3"
+GO_VERSION: "1.19.4"
 
-RAW_THERAPEE_VERSION: "5.8"
+RAW_THERAPEE_VERSION: "5.9"
 OBSIDIAN_VERSION: "0.15.9"
 
 COMMON_PACKAGES:
@@ -36,8 +36,6 @@ COMMON_PACKAGES:
   - gvim                    # Vi IMproved, a programmer's text editor
   - htop                    # Better tool to show system resource usage in the commandline
   - inxi                    # Show hardware informations about my computer
-  - jc                      # Converts the output of popular command-line tools and file-types to JSON
-  - jq                      # Command-line JSON processor
   - keepassxc               # Manage my passwords with a GUI
   - keychain                # re-use ssh-agent and/or gpg-agent between logins
   - kitty                   # Terminal with tranparency and glyph fonts
@@ -55,6 +53,7 @@ COMMON_PACKAGES:
   - pinta                   # Image-Editor
   - pygmentize              # highlights the input file
   - ranger                  # My favorite file manager for the terminal
+  - ripgrep                 # The better grep alternative, written in Rust
   - scrot                   # Screenshot-Tool
   - shotwell                # ImageLibraries with GUI
   - sshpass                 # Pass passwords to the ssh tool
@@ -63,6 +62,7 @@ COMMON_PACKAGES:
   - tree                    # Commandline tool to show directory tree
   - veracrypt               # Using encrypted file containers
   - sxiv                    # Imageviewing in the terminal
+  - screenkey               # Show the currrent typed key on the screen (helpful for presentations)
   - xclip                   # Clipboard usage in the terminal
   - xsel                    # Commandlinetool for the clipboard
   - zathura                 # A Pdf viewer for the terminal

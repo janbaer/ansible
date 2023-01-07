@@ -1,4 +1,5 @@
 ---
+
 - name: Install basic development tools
   become: true
   pacman:
@@ -8,6 +9,7 @@
       - "ctags"         # Its required for the tags plugin in VIM
       - "gitg"          # GUI for Git
       - "highlight"     # Higlighting sourcecode
+      - "jc"            # Converts the output of popular command-line tools and file-types to JSON
       - "jq"            # Tool for querying json in the commandline
       - "httpie"        # My favorite tools for HTTP request in the commandline
       - "meld"          # Difftool with UI
