@@ -1,0 +1,8 @@
+---
+
+skip_list:
+  - 'yaml'
+  - 'role-name'
+  - 'fqcn-builtins'
+  - name
+  - literal-compare

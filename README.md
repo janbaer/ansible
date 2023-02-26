@@ -1,6 +1,6 @@
 # Ansible playbooks
 
-This repository containa a playbook to configure my desktop environment.
+This repository contains a playbook to configure my desktop environment.
 
 It's based on any ArchLinux distribution like Manjaro for example.
 

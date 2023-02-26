@@ -5,12 +5,12 @@ USER_NAME: "{{ lookup('env', 'USER') }}"
 HOME_DIR: "/home/{{ USER_NAME }}"
 HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 
-NODE_VERSION: "18.13.0"
+NODE_VERSION: "18.14.2"
 
-GO_VERSION: "1.19.4"
+GO_VERSION: "1.20.1"
 
 RAW_THERAPEE_VERSION: "5.9"
-OBSIDIAN_VERSION: "0.15.9"
+OBSIDIAN_VERSION: "1.1.15"
 
 COMMON_PACKAGES:
   - ack                     # Searching from the commandline (In case that ag will not found anything)

@@ -6,8 +6,8 @@
     name:
       - xorg
       # - conky
-      - compton
-      - i3-gaps
+      - picom
+      - i3-wm
       - i3lock
       - i3status
       - feh

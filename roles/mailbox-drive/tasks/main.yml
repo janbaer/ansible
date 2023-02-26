@@ -29,6 +29,8 @@
   lineinfile:
     dest: "/home/{{ USER_NAME }}/.davfs2/secrets"
     line: "/media/{{ USER_NAME }}/{{ mailbox_drive_mount }} {{ mailbox_drive_user }}@mailbox.org {{ mailbox_drive_password }}"
+    create: true
+    mode: 0600
 
 - name: Add mount for mailbox-drive in fstab file
   become: true

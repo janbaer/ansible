@@ -4,7 +4,6 @@
   roles:
     - {role: base-system, tags: [base]}
     - {role: config-files, tags: [config-files]}
-    - {role: nas-mounts, tags: [nas-mounts]}
     - {role: cron-jobs, tags: [cron, cron-jobs]}
     - {role: develop, tags: [develop]}
     - {role: golang, tags: [golang, go]}
@@ -25,6 +24,7 @@
 - hosts: private_pcs
   roles:
     - {role: gpg, tags: [gpg, pass]}
+    - {role: nas-mounts, tags: [nas-mounts]}
     - {role: borg, tags: [borg]}
 
 - hosts: desktop_pcs

@@ -1,6 +1,6 @@
 ---
 
-- name: Install 8s tool for the commandline
+- name: Install k8s tool for the commandline
   become: true
   pacman:
     name:

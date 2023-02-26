@@ -20,8 +20,8 @@
   aur:
     use: yay
     name: "{{ AUR_PACKAGES }}"
+  ignore_errors: true
 
-  ignore_errors: yes
 - name: Install RawTherapee
   include_tasks: ./raw-therapee.yml
 
