@@ -17,6 +17,7 @@ COMMON_PACKAGES:
   - alsa-tools              # Tools for managing audio output
   - arandr                  # GUI for selecting multiple monitors location and resolution
   - arch-audit              # Searching for vulnerable arch-packages
+  - bat                     # A combination of cat and less written in Rust https://github.com/sharkdp/bat 
   - brave-browser           # Brave browser, alternative for Chromium with builtin sync and ad-block
   - btop                    # A monitor of system resources, bpytop ported to C++
   - curl                    # Http-Requests from the commandline
@@ -57,6 +58,7 @@ COMMON_PACKAGES:
   - scrot                   # Screenshot-Tool
   - shotwell                # ImageLibraries with GUI
   - sshpass                 # Pass passwords to the ssh tool
+  - starship                # The minimal, blazing-fast, and infinitely customizable prompt for any shell https://starship.rs/ 
   - the_silver_searcher     # AG is the faster alternative to Ack
   - tig                     # My favorite tool for Git in the terminal
   - tree                    # Commandline tool to show directory tree
