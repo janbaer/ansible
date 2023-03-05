@@ -39,4 +39,10 @@ In case you want to test the project before pushing it to GitHub on a fresh inst
 rsync -avP ~/Projects/ansible/ jan@{ip-address}:/home/jan/ansible
 ```
 
-You need to activate the `sshd` service on the target system before.
+You need to activate the `sshd` service on the target system before. In case you want to mount the Ansible folder from the host system directly into the VM, you need to run the following command
+
+```
+sudo mount -t 9p -o trans=virtio /share /mnt
+```
+
+After, you can run Ansible also from _/mnt_ folder.

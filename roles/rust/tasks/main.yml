@@ -4,7 +4,7 @@
   stat:
     path: /usr/bin/cargo
   register: cargo_stats
-  ignore_errors: yes
+  ignore_errors: true
   changed_when: false
   check_mode: false
 
@@ -34,5 +34,18 @@
   pacman:
     name:
       - rust-analyzer
+      - stylua
     state: present
     force: false
+
+- name: Install extensions for cargo
+  shell: "cargo install {{ item }}"
+  with_items:
+    - cargo-watch
+  ignore_errors: true
+
+- name: Add extensions with rustup
+  shell: "rustup component add {{ item }}"
+  with_items:
+    - clippy
+  ignore_errors: true

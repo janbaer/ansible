@@ -29,3 +29,4 @@
     name:
       - rofi-greenclip
   ignore_errors: yes
+  ignore_errors: true

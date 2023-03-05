@@ -48,7 +48,7 @@
       environment:
         NVM_DIR: "{{ NVM_DIR }}"
       when: NODE_IS_INSTALLED.rc == 1 or not NODE_VERSION in NODE_CHECK_VERSION.stdout
-  ignore_errors: yes
+  ignore_errors: true
   when: NVM_CHECK.stat.exists == True
 
 - name: Install yarn
@@ -64,11 +64,13 @@
     state: present
   with_items:
     - eslint
-    - google-translate-cli
-    - live-server
     - typescript
-    - npkill
-    - npm-check
+    - prettier
+    - google-translate-cli  # Google Translate from the command line
+    - live-server           # Running a webserver from the current directory
+    - npkill                # Tool for cleanup node_modules folders from current working tree
+    - npm-check             # Checks current project for outdated or unused npm modules
+    - neovim                # Neovim client API and neovim remote plugin provider
   environment:
     PATH: $PATH:{{ NVM_DIR }}/versions/node/v{{ NODE_VERSION }}/bin/
-  ignore_errors: yes
+  ignore_errors: true

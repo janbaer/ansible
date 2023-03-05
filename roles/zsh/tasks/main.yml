@@ -14,10 +14,11 @@
 
 - name: Clone zsh-autosuggestions
   git:
-    repo: git://github.com/zsh-users/zsh-autosuggestions
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
     dest: "{{ HOME_DIR }}/.zsh/zsh-autosuggestions"
     update: false
 
 - name: set zsh as default shell
   become: true
   command: "chsh -s /usr/bin/zsh {{ USER_NAME }}"
+  changed_when: true
