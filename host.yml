@@ -1,0 +1,35 @@
+all:
+  children:
+    desktop_pcs:
+      hosts:
+        check24-janbaer:
+          ansible_connection: local
+        jabasoft-linux-pc1:
+          ansible_connection: local
+        jabasoft-pc2:
+          ansible_connection: local
+    notebooks:
+      hosts:
+        check24-janbaer-xps:
+          ansible_connection: local
+        jabasoft-mbx:
+          ansible_connection: local
+    private_pcs:
+      hosts:
+        jabasoft-linux-pc1: {}
+        jabasoft-pc2: {}
+        jabasoft-mbx: {}
+        jabasoft-vm-manjaro: {}
+        jan-vpc1: {}
+    remote_hosts:
+      hosts:
+        jabasoft-ds:
+          ansible_connection: ssh
+          ansible_host: JABASOFT-DS
+          ansible_private_key_file: ~/.ssh/rsync-key
+          ansible_user: jan
+    ungrouped: {}
+    virtual_pcs:
+      hosts:
+        jabasoft-vm-manjaro:
+          ansible_connection: local

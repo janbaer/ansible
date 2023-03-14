@@ -1,78 +1,77 @@
 ---
-
 USER_NAME: "{{ lookup('env', 'USER') }}"
 
-HOME_DIR: "/home/{{ USER_NAME }}"
+HOME_DIR: '/home/{{ USER_NAME }}'
 HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 
-NODE_VERSION: "18.14.2"
+NODE_VERSION: '18.15.0'
 
-GO_VERSION: "1.20.1"
+GO_VERSION: '1.20.1'
 
-RAW_THERAPEE_VERSION: "5.9"
-OBSIDIAN_VERSION: "1.1.15"
+RAW_THERAPEE_VERSION: '5.9'
+OBSIDIAN_VERSION: '1.1.15'
 
 COMMON_PACKAGES:
-  - ack                     # Searching from the commandline (In case that ag will not found anything)
-  - alsa-tools              # Tools for managing audio output
-  - arandr                  # GUI for selecting multiple monitors location and resolution
-  - arch-audit              # Searching for vulnerable arch-packages
-  - bat                     # A combination of cat and less written in Rust https://github.com/sharkdp/bat 
-  - brave-browser           # Brave browser, alternative for Chromium with builtin sync and ad-block
-  - btop                    # A monitor of system resources, bpytop ported to C++
-  - curl                    # Http-Requests from the commandline
-  - cronie                  # Running cron-jobs
-  - chromium                # My favorite browser
-  - dunst                   # Simple notifications daemon https://wiki.archlinux.org/title/Dunst#Installation
-  - easytag                 # Managing id3 tags of MP3 files
-  - evince                  # Another Pdf-Viewer
-  - exa                     # A nice replacement for the ls command
-  - flameshot               # A better tool for making screenshots
-  - fzf                     # Fuzzyfinder for the commandline
-  - fx                      # Better navigation for large JSON on the commandline
-  - glow                    # Command-line markdown renderer
-  - gopass                  # Passwordmanagement in the commandline (Better than pass)
-  - gedit                   # The Gnome editor
-  - git-delta               # Syntax-highlighting pager for git and diff output
-  - gvim                    # Vi IMproved, a programmer's text editor
-  - htop                    # Better tool to show system resource usage in the commandline
-  - inxi                    # Show hardware informations about my computer
-  - keepassxc               # Manage my passwords with a GUI
-  - keychain                # re-use ssh-agent and/or gpg-agent between logins
-  - kitty                   # Terminal with tranparency and glyph fonts
-  - mplayer                 # Videoplayer for the terminal
-  - moc                     # MusicPlayer for the terminal
-  - nautilus                # The file explorer from Gnome
-  - neofetch                # Creating a nice splashscreen when starting a new shell
-  - network-manager-applet  # Managing network connection from the i3 toolbar
-  - ncdu                    # Show disk usage
+  - alsa-tools # Tools for managing audio output
+  - arandr # GUI for selecting multiple monitors location and resolution
+  - arch-audit # Searching for vulnerable arch-packages
+  - bat # A combination of cat and less written in Rust https://github.com/sharkdp/bat
+  - brave-browser # Brave browser, alternative for Chromium with builtin sync and ad-block
+  - btop # A monitor of system resources, bpytop ported to C++
+  - curl # Http-Requests from the commandline
+  - cronie # Running cron-jobs
+  - chromium # My favorite browser
+  - dunst # Simple notifications daemon https://wiki.archlinux.org/title/Dunst#Installation
+  - easytag # Managing id3 tags of MP3 files
+  - evince # Another Pdf-Viewer
+  - exa # A nice replacement for the ls command
+  - flameshot # A better tool for making screenshots
+  - fzf # Fuzzyfinder for the commandline
+  - fx # Better navigation for large JSON on the commandline
+  - glow # Command-line markdown renderer
+  - gopass # Passwordmanagement in the commandline (Better than pass)
+  - gedit # The Gnome editor
+  - git-delta # Syntax-highlighting pager for git and diff output
+  - gvim # Vi IMproved, a programmer's text editor
+  - htop # Better tool to show system resource usage in the commandline
+  - inxi # Show hardware informations about my computer
+  - keepassxc # Manage my passwords with a GUI
+  - keychain # re-use ssh-agent and/or gpg-agent between logins
+  - kitty # Terminal with tranparency and glyph fonts
+  - mplayer # Videoplayer for the terminal
+  - moc # MusicPlayer for the te
+  - nautilus # The file explorer from Gnome
+  - neofetch # Creating a nice splashscreen when starting a new shell
+  - neovim # the better version of VIM which is the better version of VI
+  - network-manager-applet # Managing network connection from the i3 toolbar
+  - ncdu # Show disk usage
   # - otf-fira-code           # My favorite fonts for source code with ligatures
-  - ttf-fira-code           # My favorite fonts for source code with ligatures
-  - pam-u2f                 # Support for authentication with U2F keys
-  - pavucontrol             # Pulseaudio Audio Control
-  - pdfpc                   # PdfViewer for presentations
-  - pinta                   # Image-Editor
-  - pygmentize              # highlights the input file
-  - ranger                  # My favorite file manager for the terminal
-  - ripgrep                 # The better grep alternative, written in Rust
-  - scrot                   # Screenshot-Tool
-  - shotwell                # ImageLibraries with GUI
-  - sshpass                 # Pass passwords to the ssh tool
-  - starship                # The minimal, blazing-fast, and infinitely customizable prompt for any shell https://starship.rs/ 
-  - the_silver_searcher     # AG is the faster alternative to Ack
-  - tig                     # My favorite tool for Git in the terminal
-  - tree                    # Commandline tool to show directory tree
-  - veracrypt               # Using encrypted file containers
-  - sxiv                    # Imageviewing in the terminal
-  - screenkey               # Show the currrent typed key on the screen (helpful for presentations)
-  - xclip                   # Clipboard usage in the terminal
-  - xsel                    # Commandlinetool for the clipboard
-  - zathura                 # A Pdf viewer for the terminal
-  - zathura-pdf-mupdf       # Plugin for Zahthura to show Pdf and Epubs
+  - ttf-fira-code # My favorite fonts for source code with ligatures
+  - pam-u2f # Support for authentication with U2F keys
+  - pavucontrol # Pulseaudio Audio Control
+  - pdfpc # PdfViewer for presentations
+  - pinta # Image-Editor
+  - pygmentize # highlights the input file
+  - ranger # My favorite file manager for the terminal
+  - ripgrep # The better grep alternative, written in Rust
+  - scrot # Screenshot-Tool
+  - shotwell # ImageLibraries with GUI
+  - sshpass # Pass passwords to the ssh tool
+  - starship # The minimal, blazing-fast, and infinitely customizable prompt for any shell https://starship.rs/
+  - the_silver_searcher # AG is the faster alternative to Ack
+  - tig # My favorite tool for Git in the terminal
+  - tree # Commandline tool to show directory tree
+  - veracrypt # Using encrypted file containers
+  - sxiv # Imageviewing in the terminal
+  - screenkey # Show the currrent typed key on the screen (helpful for presentations)
+  - xclip # Clipboard usage in the terminal
+  - xsel # Commandlinetool for the clipboard
+  - zathura # A Pdf viewer for the terminal
+  - zathura-pdf-mupdf # Plugin for Zahthura to show Pdf and Epubs
 
 AUR_PACKAGES: []
 
-JABASOFT_DS_IP_ADDRESS: "192.168.178.21"
+JABASOFT_DS_IP_ADDRESS: '192.168.178.21'
 JABASOFT_DS_SSH_PORT: 26
 
-mailbox_drive_user: "jan.baer"
+mailbox_drive_user: 'jan.baer'
