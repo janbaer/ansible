@@ -1,5 +1,4 @@
 ---
-
 - name: Install i3
   become: true
   pacman:
@@ -28,5 +27,4 @@
     use: yay
     name:
       - rofi-greenclip
-  ignore_errors: yes
   ignore_errors: true
