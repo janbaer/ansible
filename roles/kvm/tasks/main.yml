@@ -2,11 +2,18 @@
 
 # See also https://linuxhint.com/install_configure_kvm_archlinux/
 
+- name: Remove conflicting packages before installing required packages
+  become: true
+  community.general.pacman:
+    name:
+      - iptables
+    state: absent
+
 - name: Install required packages for using KVM
   become: true
-  pacman:
+  community.general.pacman:
     name:
-      - qemu
+      - qemu-full
       - virt-manager
       - virt-viewer
       - dnsmasq
@@ -14,7 +21,6 @@
       - bridge-utils
       - openbsd-netcat
       - ebtables
-      - iptables
       - libguestfs
     state: present
 
@@ -25,6 +31,7 @@
       - libguestfs
 
 - name: Libvirtd systemd service
+  become: true
   service:
     name: libvirtd
     enabled: true
