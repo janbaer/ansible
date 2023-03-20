@@ -1,0 +1,38 @@
+---
+
+- name: Download and install terraform version {{ TERRAFORM_VERSION }}
+  tags: terraform
+  block:
+    - name: Download Terraform binary
+      get_url:
+        url: https://releases.hashicorp.com/terraform/{{ TERRAFORM_VERSION }}/terraform_{{ TERRAFORM_VERSION }}_linux_amd64.zip
+        dest: /tmp/terraform.zip
+        mode: 0644
+      check_mode: false
+
+    - name: Unarchive zip file 
+      unarchive:
+        copy: false
+        src: "/tmp/terraform.zip"
+        dest: "/tmp"
+        creates: "terraform"
+      ignore_errors: "{{ ansible_check_mode }}"
+
+    - name: Copy terraform to /usr/local/bin
+      become: true
+      copy:
+        remote_src: true
+        src: "/tmp/terraform"
+        dest: "/usr/local/bin/terraform"
+        owner: "root"
+        group: "root"
+        mode: 0755
+      ignore_errors: "{{ ansible_check_mode }}"
+
+    - name: Cleanup
+      file:
+        path: "/tmp/{{ item }}"
+        state: absent
+      with_items:
+        - terraform
+        - terraform.zip

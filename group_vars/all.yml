@@ -11,6 +11,8 @@ GO_VERSION: '1.20.1'
 RAW_THERAPEE_VERSION: '5.9'
 OBSIDIAN_VERSION: '1.1.15'
 
+TERRAFORM_VERSION: "1.4.2"
+
 COMMON_PACKAGES:
   - alsa-tools # Tools for managing audio output
   - arandr # GUI for selecting multiple monitors location and resolution

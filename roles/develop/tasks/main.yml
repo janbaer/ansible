@@ -4,15 +4,23 @@
   become: true
   pacman:
     name:
-      - "base-devel"
-      - "cmake"
-      - "ctags"         # Its required for the tags plugin in VIM
-      - "gitg"          # GUI for Git
-      - "highlight"     # Higlighting sourcecode
-      - "jc"            # Converts the output of popular command-line tools and file-types to JSON
-      - "jq"            # Tool for querying json in the commandline
-      - "httpie"        # My favorite tools for HTTP request in the commandline
-      - "meld"          # Difftool with UI
+      - base-devel
+      - cmake
+      - ctags                 # Its required for the tags plugin in VIM
+      - gitg                  # GUI for Git
+      - git-delta             # Syntax-highlighting pager for git and diff output
+      - git-ui                # Another nice terminal UI written for Git written in Rust
+      - highlight             # Higlighting sourcecode
+      - jc                    # Converts the output of popular command-line tools and file-types to JSON
+      - jq                    # Tool for querying json in the commandline
+      - httpie                # My favorite tools for HTTP request in the commandline
+      - meld                  # Difftool with UI
+      - yamllint
+      - ansible-lint
+      - dog                   # A dns-lookup tool (like dig) https://dns.lookup.dog/
+      - molecule              # Testing Ansible roles
+      - molecule-docker
+      - molecule-vagrant
     state: present
 
 - name: Install developer packages from aur
@@ -20,4 +28,7 @@
     use: yay
     name:
       - aur/git-extras
-  ignore_errors: yes
+  ignore_errors: true
+
+- include_tasks: ./terraform.yml
+  tags: terraform
