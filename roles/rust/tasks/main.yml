@@ -31,21 +31,24 @@
 
 - name: Install rust-analyzer
   become: true
-  pacman:
+  community.general.pacman:
     name:
       - rust-analyzer
       - stylua
     state: present
     force: false
 
+- debug:
+    msg: "Next will be the installation of cargo extensions. When it's running for the first time, the crate.io index will be downloaed and this can take a long time. So please be patient..."
+
 - name: Install extensions for cargo
-  shell: "cargo install {{ item }}"
+  command: "cargo install {{ item }}"
   with_items:
     - cargo-watch
   ignore_errors: true
 
 - name: Add extensions with rustup
-  shell: "rustup component add {{ item }}"
+  command: "rustup component add {{ item }}"
   with_items:
     - clippy
   ignore_errors: true
