@@ -1,0 +1,13 @@
+---
+
+- name: Install vagrant and additional tools
+  become: true
+  pacman:
+    name:
+      - vagrant
+      - molecule-vagrant
+    state: present
+
+- name: Install libvirt plugin
+  command:
+    cmd: "vagrant plugin install vagrant-libvirt"
