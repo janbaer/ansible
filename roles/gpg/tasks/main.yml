@@ -2,6 +2,14 @@
 
 - name: Copy Gpg files to Home folder
   copy:
+    src: "gpg-agent.conf"
+    dest: "{{ HOME_DIR }}/.gnupg/gpg-agent.conf"
+    owner: "{{ USER_NAME }}"
+    group: "{{ USER_NAME }}"
+    mode: 0600
+
+- name: Copy Gpg files to Home folder
+  copy:
     src: "{{ item }}"
     dest: "{{ HOME_DIR }}/{{ item }}"
     owner: "{{ USER_NAME }}"
@@ -12,7 +20,7 @@
 - name: Check if my gpg key was imported before
   shell: "gpg --list-keys"
   register: GPG_KEYS
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Import my gpg key
   shell: "gpg --batch --passphrase={{ GPG_PASSWORD }} --import {{ HOME_DIR }}/jan.asc "
@@ -34,5 +42,5 @@
 
 - name: Clone my passwords Git repo
   git:
-    repo: ssh://jan@JABASOFT-DS/volume1/homes/jan/git/pass
+    repo: ssh://jan@jabasoft-ds/volume1/homes/jan/git/pass
     dest: ~/.password-store
