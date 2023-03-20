@@ -2,7 +2,7 @@
 
 - name: Create directory where the u2f rules file should be copied
   become: true
-  file:
+  ansible.builtin.file:
     path: /etc/udev/rules.d
     state: directory
     owner: root
@@ -11,9 +11,22 @@
 
 - name: Copy u2f-rules to be make Linux to detect my KEY-ID u2f usb dongle
   become: true
-  copy:
+  ansible.builtin.copy:
     src: ./../files/etc/udev/rules.d/70-u2f.rules
     dest: /etc/udev/rules.d/70-u2f.rules
     owner: root
     group: root
     mode: 0644  # u=rw,g=r,o=r
+
+- name: Reload rules
+  become: true
+  ansible.builtin.command: "udevadm control --reload"
+  changed_when: false
+
+- name: Install required software and drivers
+  become: true
+  community.general.pacman:
+    name:
+      - yubikey-manager-qt
+    state: present
+    force: false
