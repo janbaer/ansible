@@ -2,7 +2,7 @@
 
 - name: Install required packages for Borg backup
   become: true
-  pacman:
+  community.general.pacman:
     name:
       - python-llfuse
       - borg
@@ -15,3 +15,10 @@
     url: https://gist.githubusercontent.com/mrkmg/dbabe71b379adb282ca6ef4568d40f5a/raw/fd039e54e51ee7b931e4c34a2cb8e1ee5dfb0882/borg-completion.zsh
     dest: /usr/share/zsh/site-functions/_borg
     mode: 644
+
+- name: Make sure that directory for mounting borg repo exists
+  file:
+    path: /mnt/borg
+    state: directory
+    mode: 0700
+
