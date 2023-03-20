@@ -6,7 +6,7 @@
     dest: "{{ HOME_DIR }}/.gnupg/gpg-agent.conf"
     owner: "{{ USER_NAME }}"
     group: "{{ USER_NAME }}"
-    mode: 0600
+    mode: 0644
 
 - name: Copy Gpg files to Home folder
   copy:

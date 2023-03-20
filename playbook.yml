@@ -2,38 +2,39 @@
 
 - hosts: all
   roles:
-    - {role: base-system, tags: [base]}
-    - {role: config-files, tags: [config-files]}
-    - {role: cron-jobs, tags: [cron, cron-jobs]}
-    - {role: develop, tags: [develop]}
-    - {role: golang, tags: [golang, go]}
-    - {role: nodejs, tags: [nodejs]}
-    - {role: rust, tags: [rust]}
-    - {role: k8s, tags: [k8s]}
+    - { role: base-system, tags: [base] }
+    - { role: config-files, tags: [config-files] }
+    - { role: cron-jobs, tags: [cron, cron-jobs] }
+    - { role: develop, tags: [develop] }
+    - { role: golang, tags: [golang, go] }
+    - { role: nodejs, tags: [nodejs] }
+    - { role: rust, tags: [rust] }
+    - { role: k8s, tags: [k8s] }
     # - {role: python, tags: [python]}
-    - {role: docker, tags: [docker]}
-    - {role: i3, tags: [i3]}
-    - {role: tmux, tags: [tmux]}
-    - {role: zsh, tags: [zsh]}
-    - {role: ssh-key, tags: [ssh, ssh-key]}
-    - {role: dotfiles, tags: [dotfiles]}
-    - {role: vim, tags: [vim]}
-    - {role: vscode, tags: [vscode]}
-    - {role: mailbox-drive, tags: [mailbox-drive]}
+    - { role: docker, tags: [docker] }
+    - { role: i3, tags: [i3] }
+    - { role: tmux, tags: [tmux] }
+    - { role: zsh, tags: [zsh] }
+    - { role: ssh-key, tags: [ssh, ssh-key] }
+    - { role: dotfiles, tags: [dotfiles] }
+    - { role: vim, tags: [vim] }
+    - { role: vscode, tags: [vscode] }
+    - { role: vagrant, tags: [vagrant, never] }
+    - { role: mailbox-drive, tags: [mailbox-drive] }
 
 - hosts: private_pcs
   roles:
-    - {role: gpg, tags: [gpg, pass]}
-    - {role: nas-mounts, tags: [nas-mounts]}
-    - {role: borg, tags: [borg]}
+    - { role: gpg, tags: [gpg, pass] }
+    - { role: nas-mounts, tags: [nas-mounts] }
+    - { role: borg, tags: [borg] }
 
 - hosts: desktop_pcs
   roles:
-    - {role: kvm, tags: [kvm]}
-    - {role: u2f-support, tags: [u2f]}
+    - { role: kvm, tags: [kvm] }
+    - { role: u2f-support, tags: [u2f] }
 
 - hosts: notebooks
   roles:
-    - {role: libinput-gestures, tags: [libinput, touchpad]}
-    - {role: u2f-support, tags: [u2f]}
-    - {role: huawei-soundfix, tags: [huawei]}
+    - { role: libinput-gestures, tags: [libinput, touchpad] }
+    - { role: u2f-support, tags: [u2f] }
+    - { role: huawei-soundfix, tags: [huawei] }
