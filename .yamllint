@@ -1,3 +1,4 @@
+# vim:ft=yaml
 ---
 
 extends: default
@@ -11,6 +12,14 @@ ignore: |
   vault.yml
 
 rules:
+  braces:
+    max-spaces-inside: 1
+  comments:
+    min-spaces-from-content: 1
   line-length: disable
   truthy:
     allowed-values: ['true', 'false', 'yes', 'no']
+  key-ordering: disable
+  empty-lines:
+    max: 1
+    max-end: 1
