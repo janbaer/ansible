@@ -1,4 +1,5 @@
 ---
+
 USER_NAME: "{{ lookup('env', 'USER') }}"
 
 HOME_DIR: '/home/{{ USER_NAME }}'
@@ -17,6 +18,7 @@ COMMON_PACKAGES:
   - alsa-tools # Tools for managing audio output
   - arandr # GUI for selecting multiple monitors location and resolution
   - arch-audit # Searching for vulnerable arch-packages
+  - ack # ack is a grep-like source code search tool. (I don't use it anymore, but without the ack plugin in nvim wont work)
   - bat # A combination of cat and less written in Rust https://github.com/sharkdp/bat
   - brave-browser # Brave browser, alternative for Chromium with builtin sync and ad-block
   - btop # A monitor of system resources, bpytop ported to C++
@@ -27,13 +29,13 @@ COMMON_PACKAGES:
   - easytag # Managing id3 tags of MP3 files
   - evince # Another Pdf-Viewer
   - exa # A nice replacement for the ls command
+  - filezilla # Transferring data with SSH
   - flameshot # A better tool for making screenshots
   - fzf # Fuzzyfinder for the commandline
   - fx # Better navigation for large JSON on the commandline
   - glow # Command-line markdown renderer
   - gopass # Passwordmanagement in the commandline (Better than pass)
   - gedit # The Gnome editor
-  - git-delta # Syntax-highlighting pager for git and diff output
   - gvim # Vi IMproved, a programmer's text editor
   - htop # Better tool to show system resource usage in the commandline
   - inxi # Show hardware informations about my computer
@@ -47,8 +49,8 @@ COMMON_PACKAGES:
   - neovim # the better version of VIM which is the better version of VI
   - network-manager-applet # Managing network connection from the i3 toolbar
   - ncdu # Show disk usage
-  # - otf-fira-code           # My favorite fonts for source code with ligatures
   - ttf-fira-code # My favorite fonts for source code with ligatures
+  - ttf-nerd-fonts-symbols-common
   - pam-u2f # Support for authentication with U2F keys
   - pavucontrol # Pulseaudio Audio Control
   - pdfpc # PdfViewer for presentations
@@ -57,10 +59,12 @@ COMMON_PACKAGES:
   - ranger # My favorite file manager for the terminal
   - ripgrep # The better grep alternative, written in Rust
   - scrot # Screenshot-Tool
+  - seahorse # Key management SSH and GPG
   - shotwell # ImageLibraries with GUI
+  - simple-scan # Scanning of documents and photos
   - sshpass # Pass passwords to the ssh tool
   - starship # The minimal, blazing-fast, and infinitely customizable prompt for any shell https://starship.rs/
-  - the_silver_searcher # AG is the faster alternative to Ack
+  # - the_silver_searcher # AG is the faster alternative to Ack
   - tig # My favorite tool for Git in the terminal
   - tree # Commandline tool to show directory tree
   - veracrypt # Using encrypted file containers
