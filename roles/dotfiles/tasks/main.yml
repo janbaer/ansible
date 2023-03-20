@@ -13,7 +13,6 @@
     - {src: Xresources.j2, dest: .Xresources}
     - {src: profile.j2, dest: .profile}
 
-
 - name: Create projects directory
   file:
     path: "{{ HOME_DIR }}/Projects"

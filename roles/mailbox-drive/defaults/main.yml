@@ -1,5 +1,5 @@
 ---
 
 mailbox_drive_mount: "mailbox-drive"
-mailbox_drive_user: ""
+mailbox_drive_user: "{{ MAILBOX_DRIVE_USER }}"
 mailbox_drive_password: "{{ vault_mailbox_drive_password }}"
