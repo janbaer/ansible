@@ -9,7 +9,7 @@
       - ctags                 # Its required for the tags plugin in VIM
       - gitg                  # GUI for Git
       - git-delta             # Syntax-highlighting pager for git and diff output
-      - git-ui                # Another nice terminal UI written for Git written in Rust
+      - gitui                 # Another nice terminal UI written for Git written in Rust
       - highlight             # Higlighting sourcecode
       - jc                    # Converts the output of popular command-line tools and file-types to JSON
       - jq                    # Tool for querying json in the commandline
