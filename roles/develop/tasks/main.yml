@@ -6,11 +6,12 @@
     name:
       - base-devel
       - cmake
+      - codespell             # Finding typos in my code not only in comments from commandline or in Nvim with null_ls
       - ctags                 # Its required for the tags plugin in VIM
       - gitg                  # GUI for Git
       - git-delta             # Syntax-highlighting pager for git and diff output
       - gitui                 # Another nice terminal UI written for Git written in Rust
-      - highlight             # Higlighting sourcecode
+      - highlight             # Highlighting sourcecode
       - jc                    # Converts the output of popular command-line tools and file-types to JSON
       - jq                    # Tool for querying json in the commandline
       - httpie                # My favorite tools for HTTP request in the commandline
