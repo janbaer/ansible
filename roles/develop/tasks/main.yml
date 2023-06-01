@@ -5,7 +5,7 @@
   pacman:
     name:
       - base-devel
-      - cmake
+      # - cmake
       - codespell             # Finding typos in my code not only in comments from commandline or in Nvim with null_ls
       - ctags                 # Its required for the tags plugin in VIM
       - dnsutils              # nslookup and dig
@@ -16,14 +16,13 @@
       - jc                    # Converts the output of popular command-line tools and file-types to JSON
       - jq                    # Tool for querying json in the commandline
       - httpie                # My favorite tools for HTTP request in the commandline
+      - make
       - meld                  # Difftool with UI
       - yamllint              # Linting my yaml files from the commandline or in Neovim
       - ansible-lint          # Same for Ansible files
       - dog                   # A dns-lookup tool (like dig) https://dns.lookup.dog/
       - pwgen                 # Password generator from the commandline. Use`pwgen 30 -1` to generate one password with a length of 30 characters
       - molecule              # Testing Ansible roles
-      - molecule-docker
-      - molecule-vagrant      # Requires installation of Vagrant before
     state: present
 
 - name: Install developer packages from aur
@@ -35,3 +34,6 @@
 
 - include_tasks: ./terraform.yml
   tags: terraform
+
+- include_tasks: ./molecule.yml
+  tags: molecule, never

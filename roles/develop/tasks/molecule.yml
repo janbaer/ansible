@@ -1,0 +1,25 @@
+---
+
+
+
+- name: Install molecule and plugins
+  tags: molecule
+  block:
+    - name: Install molecule for testing Ansible roles
+      become: true
+      pacman:
+        name:
+          - molecule
+        state: present
+
+    - name: Install setuptools
+      ansible.builtin.pip:
+        name:
+          - setuptools
+
+    - name: Install molecule-plugins
+      ansible.builtin.pip:
+        name:
+          - molecule-docker
+          - molecule-vagrant
+

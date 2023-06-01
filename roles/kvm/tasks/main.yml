@@ -1,34 +1,31 @@
 ---
 
 # See also https://linuxhint.com/install_configure_kvm_archlinux/
+# See https://vagrant-libvirt.github.io/vagrant-libvirt/installation.html#arch
 
 - name: Remove conflicting packages before installing required packages
   become: true
   community.general.pacman:
     name:
       - iptables
+    force: true
     state: absent
 
 - name: Install required packages for using KVM
   become: true
   community.general.pacman:
     name:
+      - iptables-nft
+      - libvirt
+      - openbsd-netcat
+      - bridge-utils
+      - dnsmasq
+      - libguestfs
       - qemu-full
+      - vde2
       - virt-manager
       - virt-viewer
-      - dnsmasq
-      - vde2
-      - bridge-utils
-      - openbsd-netcat
-      - ebtables
-      - libguestfs
     state: present
-
-- name: Install additional packages from AUR
-  aur:
-    use: yay
-    name:
-      - libguestfs
 
 - name: Libvirtd systemd service
   become: true
@@ -41,7 +38,8 @@
   become: true
   user:
     name: '{{ USER_NAME }}'
-    groups: [libvirt]
+    groups:
+      - libvirt
     append: true
   notify:
     - Restart libvirtd service

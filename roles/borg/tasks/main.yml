@@ -6,6 +6,7 @@
     name:
       - python-llfuse
       - borg
+      - borgmatic
     state: present
     force: false
 
@@ -17,6 +18,7 @@
     mode: 644
 
 - name: Make sure that directory for mounting borg repo exists
+  become: true
   file:
     path: /mnt/borg
     state: directory

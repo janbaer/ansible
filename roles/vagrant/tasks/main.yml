@@ -5,7 +5,6 @@
   pacman:
     name:
       - vagrant
-      - molecule-vagrant
     state: present
 
 - name: Install libvirt plugin
