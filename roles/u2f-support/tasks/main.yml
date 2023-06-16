@@ -28,5 +28,6 @@
   community.general.pacman:
     name:
       - yubikey-manager-qt
+      - x11-ssh-askpass # Required for Yubikey with Pin
     state: present
     force: false
