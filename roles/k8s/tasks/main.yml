@@ -4,9 +4,10 @@
   become: true
   community.general.pacman:
     name:
-      - 'kubectl' # Communicate with K8s from the command line
-      - 'k9s' # TUI for managing K8s clusters and pods
-      - 'kubectx' # Switching between multips k8s servers
-      - 'kubens' # Define the current default namespace
-      - 'stern' # Multi pod and container log tailing for Kubernetes
+      - kubectl   # Communicate with K8s from the command line
+      - k9s       # TUI for managing K8s clusters and pods
+      - kubectx   # Switching between multips k8s servers
+      - kubens    # Define the current default namespace
+      - stern     # Multi pod and container log tailing for Kubernetes
+      - helm      # Creating deployment charts
     state: present
