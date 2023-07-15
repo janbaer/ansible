@@ -1,0 +1,16 @@
+[Unit]
+Description=Service for timer {{ item.name }}
+
+[Service]
+Type=oneshot
+{% if item.environment is defined %}
+Environment={{ item.environment }}
+{% endif %}
+{% if item.value.pre_command is defined %}
+ExecStartPre={{ item.pre_command }}
+{% endif %}
+ExecStart={{ item.command }}
+Unit={{ item.name }}.service
+{% if item.user is defined %}
+User={{ item.user }}
+{% endif %}

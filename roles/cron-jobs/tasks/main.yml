@@ -1,18 +1,36 @@
 ---
 
-- name: Ensure logfile exists with the correct access rights
+- name: Install timers
+  tags: [cron, timers]
+  when: timers is defined
   become: true
-  copy:
-    content: ""
-    dest: "/var/log/rsync-{{ HOST_NAME }}.log"
-    force: false
-    group: sys
-    owner: root
-    mode: 0666
+  block:
+    - name: Uploading service file
+      template:
+          src: timer.service.j2
+          dest: "{{ systemd_base_path | default('/etc/systemd/system') }}/{{ item.name }}.service"
+          owner: "{{ item.user | default('root') }}"
+          group: "{{ item.user | default('root') }}"
+          mode: 0644
+      with_items: "{{ timers }}"
+      notify: Reload systemd
 
-- name: Backup my home dir every day
-  cron:
-    name: "rsync-{{ HOST_NAME }}"
-    minute: "0"
-    job: "JABASOFT_DS_SSH_PORT={{ JABASOFT_DS_SSH_PORT }} /home/jan/bin/rsync-{{ HOST_NAME }}.sh > /var/log/rsync-{{ HOST_NAME }}.log"
-  tags: cron
+    - name: Uploading timer file
+      template:
+          src: timer.timer.j2
+          dest: "{{ systemd_base_path | default('/etc/systemd/system') }}/{{ item.name }}.timer"
+          owner: "{{ item.user | default('root') }}"
+          group: "{{ item.user | default('root') }}"
+          mode: 0644
+      with_items: "{{ timers }}"
+      notify: Reload systemd
+
+    - name: Enabling timers
+      systemd:
+          name: "{{ item.name }}.timer"
+          state: restarted
+          enabled: true
+          masked: false
+          daemon_reload: true
+          scope: "{{ systemd_scope | default('system') }}"
+      with_items: "{{ timers }}"

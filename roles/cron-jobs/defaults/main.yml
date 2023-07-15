@@ -1,0 +1,17 @@
+---
+
+# timers:
+#   - name: backup-to-usb
+#     user: "jan"
+#     # pre_command: ""
+#     command: "/home/jan/bin/rsync-to-usb.sh"
+#     on_calendar: "hourly"
+#     # environment: ""
+#     # on_active_sec: ""
+#     # on_boot_sec: ""
+#     # on_startup_sec: ""
+#     # on_unit_active_sec: ""
+#     # on_unit_inactive_sec: ""
+#     persistent: true
+#     accuracy_sec: "15sec"
+#     randomized_delay_sec: "5m"
