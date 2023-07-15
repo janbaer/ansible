@@ -1,7 +1,5 @@
 ---
 
-
-
 - name: Install molecule and plugins
   tags: molecule
   block:
@@ -20,6 +18,6 @@
     - name: Install molecule-plugins
       ansible.builtin.pip:
         name:
-          - molecule-docker
-          - molecule-vagrant
+          - 'molecule-plugins[docker]'
+          - 'molecule-plugins[vagrant]'
 
