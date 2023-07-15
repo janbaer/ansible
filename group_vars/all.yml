@@ -37,6 +37,7 @@ COMMON_PACKAGES:
   - gopass # Passwordmanagement in the commandline (Better than pass)
   - gedit # The Gnome editor
   - gvim # Vi IMproved, a programmer's text editor
+  - gvfs-mtp # Drivers for support mounting Android devices
   - htop # Better tool to show system resource usage in the commandline
   - inxi # Show hardware informations about my computer
   - keepassxc # Manage my passwords with a GUI
