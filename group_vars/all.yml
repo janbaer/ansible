@@ -18,12 +18,11 @@ COMMON_PACKAGES:
   - alsa-tools # Tools for managing audio output
   - arandr # GUI for selecting multiple monitors location and resolution
   - arch-audit # Searching for vulnerable arch-packages
-  - ack # ack is a grep-like source code search tool. (I don't use it anymore, but without the ack plugin in nvim wont work)
+  - ack # ack is a grep-like source code search tool. (I don't use it anymore, but without the ack plugin in nvim won't work)
   - bat # A combination of cat and less written in Rust https://github.com/sharkdp/bat
   - brave-browser # Brave browser, alternative for Chromium with builtin sync and ad-block
   - btop # A monitor of system resources, bpytop ported to C++
   - curl # Http-Requests from the commandline
-  - cronie # Running cron-jobs
   - chromium # My favorite browser
   - dunst # Simple notifications daemon https://wiki.archlinux.org/title/Dunst#Installation
   - easytag # Managing id3 tags of MP3 files
@@ -39,12 +38,12 @@ COMMON_PACKAGES:
   - gvim # Vi IMproved, a programmer's text editor
   - gvfs-mtp # Drivers for support mounting Android devices
   - htop # Better tool to show system resource usage in the commandline
-  - inxi # Show hardware informations about my computer
+  - inxi # Show hardware information about my computer
   - keepassxc # Manage my passwords with a GUI
   - keychain # re-use ssh-agent and/or gpg-agent between logins
   - kitty # Terminal with tranparency and glyph fonts
   - mplayer # Videoplayer for the terminal
-  - moc # MusicPlayer for the te
+  - moc # MusicPlayer for the terminal
   - nautilus # The file explorer from Gnome
   - neofetch # Creating a nice splashscreen when starting a new shell
   - neovim # the better version of VIM which is the better version of VI
@@ -70,7 +69,7 @@ COMMON_PACKAGES:
   - tree # Commandline tool to show directory tree
   - veracrypt # Using encrypted file containers
   - sxiv # Imageviewing in the terminal
-  - screenkey # Show the currrent typed key on the screen (helpful for presentations)
+  - screenkey # Show the current typed key on the screen (helpful for presentations)
   - xclip # Clipboard usage in the terminal
   - xsel # Commandlinetool for the clipboard
   - zathura # A Pdf viewer for the terminal
