@@ -9,6 +9,7 @@
       - codespell             # Finding typos in my code not only in comments from commandline or in Nvim with null_ls
       - ctags                 # Its required for the tags plugin in VIM
       - dnsutils              # nslookup and dig
+      - fd                    # Required by Neovim Telescope plugin to browse all projects
       - gitg                  # GUI for Git
       - git-delta             # Syntax-highlighting pager for git and diff output
       - gitui                 # Another nice terminal UI written for Git written in Rust
