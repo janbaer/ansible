@@ -30,6 +30,3 @@
 
 - name: Download and Install Obsidian
   include_tasks: ./obsidian.yml
-
-- name: Make sure that cronie is running
-  include_tasks: ./cronie.yml

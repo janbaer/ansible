@@ -1,8 +1,0 @@
----
-
-- name: Enable and start cronie systemd service
-  become: true
-  service:
-    name: cronie
-    state: restarted
-    enabled: true
