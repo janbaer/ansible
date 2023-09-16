@@ -23,6 +23,7 @@ Persistent={{ item.persistent | default('false') }}
 {% endif %}
 AccuracySec={{ item.accuracy_sec | default('15s') }}
 RandomizedDelaySec={{ item.randomized_delay_sec | default (0) }}
+Unit={{ item.name }}.service
 
 [Install]
 WantedBy=timers.target

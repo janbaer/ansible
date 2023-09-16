@@ -10,7 +10,6 @@ Environment={{ item.environment }}
 ExecStartPre={{ item.pre_command }}
 {% endif %}
 ExecStart={{ item.command }}
-Unit={{ item.name }}.service
 {% if item.user is defined %}
 User={{ item.user }}
 {% endif %}
