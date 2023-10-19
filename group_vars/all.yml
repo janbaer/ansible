@@ -7,8 +7,8 @@ HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 NODE_VERSION: '20.6.1'
 GO_VERSION: '1.21.1'
 RAW_THERAPEE_VERSION: '5.9'
-OBSIDIAN_VERSION: '1.3.7'
-TERRAFORM_VERSION: "1.5.7"
+OBSIDIAN_VERSION: '1.4.16'
+TERRAFORM_VERSION: "1.6.2"
 
 COMMON_PACKAGES:
   - alsa-tools # Tools for managing audio output
