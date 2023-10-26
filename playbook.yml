@@ -20,6 +20,7 @@
     - { role: vscode, tags: [vscode] }
     - { role: vagrant, tags: [vagrant, never] }
     - { role: mailbox-drive, tags: [mailbox-drive] }
+    - { role: security, tags: [security] }
 
 - hosts: private_pcs
   roles:

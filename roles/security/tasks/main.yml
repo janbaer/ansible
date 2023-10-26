@@ -1,0 +1,15 @@
+---
+
+- name: Install UFW firewall with Gnome UI
+  become: true
+  community.general.pacman:
+    name:
+      - ufw
+      - gufw
+
+- name: Enable and start UFW firewall systemd service
+  become: true
+  ansible.builtin.service:
+    name: ufw
+    enabled: true
+    state: started
