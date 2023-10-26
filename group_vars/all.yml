@@ -38,6 +38,7 @@ COMMON_PACKAGES:
   - keepassxc # Manage my passwords with a GUI
   - keychain # re-use ssh-agent and/or gpg-agent between logins
   - kitty # Terminal with tranparency and glyph fonts
+  - luarocks # Required by Mason in Neovim
   - mplayer # Videoplayer for the terminal
   - moc # MusicPlayer for the terminal
   - nautilus # The file explorer from Gnome

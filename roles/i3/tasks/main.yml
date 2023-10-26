@@ -4,7 +4,6 @@
   pacman:
     name:
       - xorg
-      # - conky
       - picom
       - i3-wm
       - i3lock
