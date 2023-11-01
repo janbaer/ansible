@@ -5,7 +5,6 @@
   pacman:
     name:
       - base-devel
-      # - cmake
       - codespell             # Finding typos in my code not only in comments from commandline or in Nvim with null_ls
       - ctags                 # Its required for the tags plugin in VIM
       - dnsutils              # nslookup and dig
@@ -16,6 +15,7 @@
       - highlight             # Highlighting sourcecode
       - jc                    # Converts the output of popular command-line tools and file-types to JSON
       - jq                    # Tool for querying json in the commandline
+      - jless                 # a command-line JSON viewer https://jless.io/
       - httpie                # My favorite tools for HTTP request in the commandline
       - make
       - meld                  # Difftool with UI
