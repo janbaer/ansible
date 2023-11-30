@@ -18,7 +18,6 @@
       - volumeicon
       - powerline
       - dunst
-      - xcompmgr
     state: present
 
 - name: Install packages from aur
