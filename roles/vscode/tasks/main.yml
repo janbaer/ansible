@@ -1,31 +1,26 @@
 ---
 
-- name: Install vscode
-  become: true
-  pacman:
-    name: code
-    state: present
+- name: Install VisualStudioCode from aur
+  aur:
+    use: yay
+    name: visual-studio-code-bin
 
 - name: Install vscode extensions
-  command: code-oss --install-extension {{item}}
+  command: code --install-extension {{item}}
   with_items:
+    - alex-pattison.theme-cobalt3
     - golang.Go
-    - coenraads.bracket-pair-colorizer
-    - orta.vscode-jest
     - kavod-io.vscode-jest-test-adapter
     - ryanluker.vscode-coverage-gutters
     - hbenl.vscode-test-explorer
     - eamodio.gitlens
-    # - huizhou.githd
-    # - mhutchie.git-graph
-    # - howardzuo.vscode-git-blamer
-    - vscoss.vscode-ansible
     - christian-kohler.path-intellisense
-    - vscodevim.vim
     - emmanuelbeziat.vscode-great-icons
     - svelte.svelte-vscode
-    # - rust-lang.rust-analyzer
     - pinage404.rust-extension-pack
     - swellaby.vscode-rust-test-adapter
     - redhat.vscode-yaml
-  ignore_errors: yes
+    - redhat.ansible
+    - ms-azuretools.vscode-docker
+    - ms-vscode-remote.remote-ssh
+  ignore_errors: true
