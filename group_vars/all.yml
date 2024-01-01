@@ -45,6 +45,7 @@ COMMON_PACKAGES:
   - neofetch # Creating a nice splashscreen when starting a new shell
   - neovim # the better version of VIM which is the better version of VI
   - network-manager-applet # Managing network connection from the i3 toolbar
+  - nsxiv # Imageviewing in the terminal
   - ncdu # Show disk usage
   - ttf-fira-code # My favorite fonts for source code with ligatures
   - ttf-nerd-fonts-symbols-common
@@ -65,7 +66,6 @@ COMMON_PACKAGES:
   - tig # My favorite tool for Git in the terminal
   - tree # Commandline tool to show directory tree
   - veracrypt # Using encrypted file containers
-  - sxiv # Imageviewing in the terminal
   - screenkey # Show the current typed key on the screen (helpful for presentations)
   - watchexec # Required for running commands when a file will changed
   - xclip # Clipboard usage in the terminal

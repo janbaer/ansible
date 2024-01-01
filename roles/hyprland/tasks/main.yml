@@ -1,0 +1,57 @@
+---
+
+- name: Update pacman cache
+  become: true
+  pacman:
+    update_cache: yes
+
+- name: Update pacman package lists
+  become: true
+  command: /usr/bin/pacman -Syy --noconfirm
+
+- name: Install all required packages
+  become: true
+  pacman:
+    name:
+      - hyprland                        # Hyprland is a highly customizable dynamic tiling Wayland compositor
+      - hyprpaper                       # Show wallpapers in Hyprland
+      - waybar                          # Highly customizable Wayland bar for Sway and Wlroots based compositors.
+      - swayidle                        # Lock screen after a specific idle time
+      - rofi                            # A window switcher, application launcher and dmenu replacement
+      - dunst                           # Show user messages
+      - feh                             # Selecting Images for the wallpaper
+      # - swaylock                      # Screenlocking without nice effects
+      - xdg-desktop-portal-hyprland     # xdg-desktop-portal backend for hyprland
+      - ttf-font-awesome                # Required for showing signs in Waybar
+      - wl-clipboard                    # Handling system-wide clipboard in Wayland
+      - qt5-wayland                     # Provides APIs for Wayland
+      - qt6-wayland                     # Provides APIs for Wayland
+      - cliphist                        # The new clipboard manager
+      - grim                            # Required for making screenshots
+      - slurp                           # Required for making screenshots
+      - swappy                          # Required for making screenshots
+      - yad                             # Show a GTK popup from the commandline
+      - blueman
+      - pasystray
+      - volumeicon
+    state: present
+    force: false
+
+- name: Install packages for building aur-package
+  become: true
+  pacman:
+    name:
+      - pkgconfig
+      - cmake
+    state: present
+    force: false
+
+- name: Install packages from aur
+  aur:
+    use: yay
+    name:
+      - wlogout                         # Show a nice exit screen with multiple options
+      - swaylock-effects                # Screenlocking with nice effects
+      - nwg-drawer-bin                  # A drawer for wayland compositors
+  ignore_errors: true
+

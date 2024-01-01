@@ -12,7 +12,8 @@
     - { role: k8s, tags: [k8s] }
     # - {role: python, tags: [python]}
     - { role: docker, tags: [docker] }
-    - { role: i3, tags: [i3] }
+    - { role: i3, tags: [i3, never] }
+    - { role: hyprland, tags: [hyprland, never] }
     - { role: tmux, tags: [tmux] }
     - { role: zsh, tags: [zsh] }
     - { role: ssh-key, tags: [ssh, ssh-key] }
