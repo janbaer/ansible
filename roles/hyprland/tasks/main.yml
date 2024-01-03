@@ -53,5 +53,6 @@
       - wlogout                         # Show a nice exit screen with multiple options
       - swaylock-effects                # Screenlocking with nice effects
       - nwg-drawer-bin                  # A drawer for wayland compositors
+      - wdisplays                       # Configuring display in Wayland
   ignore_errors: true
 
