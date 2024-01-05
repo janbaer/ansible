@@ -22,6 +22,7 @@
     - { role: vagrant, tags: [vagrant, never] }
     - { role: mailbox-drive, tags: [mailbox-drive] }
     - { role: security, tags: [security] }
+    - { role: pipewire, tags: [pipewire, never] }
 
 - hosts: private_pcs
   roles:

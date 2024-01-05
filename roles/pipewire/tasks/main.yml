@@ -1,0 +1,36 @@
+---
+
+# There's no need to uninstall Pulseaudio before, since manjaro-pipewire will automatically do this
+# - name: Uninstall puleaudio packages first
+#   become: true
+#   community.general.pacman:
+#     name:
+#     - gnome-bluetooth
+#     - blueberry
+#     - pulseaudio-alsa
+#     - pulseaudio-bluetooth
+#     - jack2
+#     - pulseaudio
+#     force: true
+#     state: absent
+
+- name: Install pipewire and additional packages
+  become: true
+  community.general.pacman:
+    name:
+    - manjaro-pipewire
+    state: present
+
+- name: Remove pipewire-media-session because we want to use wireplumber instead
+  become: true
+  community.general.pacman:
+    name:
+    - pipewire-media-session
+    state: absent
+
+- name: Install wireplumber instead of pipewire-media-session
+  become: true
+  community.general.pacman:
+    name:
+    - wireplumber
+    state: present
