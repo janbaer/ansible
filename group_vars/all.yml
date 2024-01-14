@@ -18,6 +18,7 @@ COMMON_PACKAGES:
   - bat # A combination of cat and less written in Rust https://github.com/sharkdp/bat
   - brave-browser # Brave browser, alternative for Chromium with builtin sync and ad-block
   - btop # A monitor of system resources, bpytop ported to C++
+  - otf-comicshanns-nerd # Another nice patched Nerdfont
   - curl # Http-Requests from the commandline
   - chromium # My favorite browser
   - dunst # Simple notifications daemon https://wiki.archlinux.org/title/Dunst#Installation
