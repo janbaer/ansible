@@ -62,15 +62,7 @@
     name: "{{ item }}"
     global: true
     state: present
-  with_items:
-    - eslint
-    - typescript
-    - prettier
-    - google-translate-cli  # Google Translate from the command line
-    - live-server           # Running a webserver from the current directory
-    - npkill                # Tool for cleanup node_modules folders from current working tree
-    - npm-check             # Checks current project for outdated or unused npm modules
-    - neovim                # Neovim client API and neovim remote plugin provider
+  with_items: "{{ GLOBAL_NPM_PACKAGES }}"
   environment:
     PATH: $PATH:{{ NVM_DIR }}/versions/node/v{{ NODE_VERSION }}/bin/
   ignore_errors: true

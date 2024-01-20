@@ -4,11 +4,11 @@ USER_NAME: "{{ lookup('env', 'USER') }}"
 HOME_DIR: '/home/{{ USER_NAME }}'
 HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 
-NODE_VERSION: '20.6.1'
-GO_VERSION: '1.21.1'
+NODE_VERSION: '20.11.0'
+GO_VERSION: '1.21.6'
 RAW_THERAPEE_VERSION: '5.9'
 OBSIDIAN_VERSION: '1.5.3'
-TERRAFORM_VERSION: "1.6.2"
+TERRAFORM_VERSION: "1.7.0"
 
 COMMON_PACKAGES:
   - alsa-tools # Tools for managing audio output
@@ -87,3 +87,16 @@ JABASOFT_DS_IP_ADDRESS: '192.168.178.21'
 JABASOFT_DS_SSH_PORT: 26
 
 MAILBOX_DRIVE_USER: 'jan.baer'
+
+GLOBAL_NPM_PACKAGES:
+  - eslint
+  - typescript
+  - ts-node               # Required to execute TS file directly from command line
+  - prettier
+  - google-translate-cli  # Google Translate from the command line
+  - live-server           # Running a webserver from the current directory
+  - npkill                # Tool for cleanup node_modules folders from current working tree
+  - npm-check             # Checks current project for outdated or unused npm modules
+  - neovim                # Neovim client API and neovim remote plugin provider
+  - tree-sitter           # Required for Neovim
+  - tree-sitter-cli       # Required for Neovim
