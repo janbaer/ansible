@@ -1,0 +1,50 @@
+---
+
+- name: Install atuin for shell completion
+  tags: atuin
+  block:
+    - fail:
+        msg: "You need to set the ATUIN_PASSWORD to be able to login"
+      when: ATUIN_PASSWORD is not defined
+
+    - name: Install atuin
+      become: true
+      pacman:
+        name:
+          - atuin
+        state: present
+
+    - name: Login user {{ ATUIN_USER_NAME }} with registration key
+      ansible.builtin.command:
+        cmd: "/usr/bin/atuin login -u {{ ATUIN_USER_NAME }} -p {{ ATUIN_PASSWORD }} -k {{ ATUIN_KEY }}"
+      when: ATUIN_PASSWORD is defined
+      register: _atuin_login_result
+
+    - name: Configure shell completion for Atuin in zsh
+      ansible.builtin.command:
+        cmd: "/usr/bin/atuin gen-completions --shell zsh --out-dir $HOME"
+
+    - name: Import current history into Atuin
+      ansible.builtin.command:
+        cmd: "/usr/bin/atuin import zsh"
+      when: not _atuin_login_result.failed
+
+    - name: Run first sync
+      ansible.builtin.command:
+        cmd: "/usr/bin/atuin sync"
+      when: not _atuin_login_result.failed
+
+    - name: Check if atuin init command is already in .zshrc
+      ansible.builtin.shell:
+        cmd: "grep -c 'atuin init' ~/.zshrc.local || true"
+      register: _atuin_init_test_result
+      check_mode: false
+
+    - name: Append the atuin init command to my .zshrc
+      ansible.builtin.lineinfile:
+        path: ~/.zshrc.local
+        regex: "atuin init"
+        line: "eval \"$(/usr/bin/atuin init zsh --disable-up-arrow)\""
+        state: present
+      when: _atuin_init_test_result.stdout == '0'
+

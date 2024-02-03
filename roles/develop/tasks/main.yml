@@ -38,3 +38,6 @@
 
 - include_tasks: ./molecule.yml
   tags: molecule, never
+
+- include_tasks: ./atuin.yaml
+  tags: atuin, never
