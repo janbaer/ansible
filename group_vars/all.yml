@@ -105,3 +105,5 @@ ATUIN_USER_NAME: "janbaer"
 ATUIN_PASSWORD: "{{ vault_atuin_password }}"
 ATUIN_KEY: "{{ vault_atuin_key }}"
 
+HYPRLAND_MONITOR_CONF: ",preferred,auto,auto"
+

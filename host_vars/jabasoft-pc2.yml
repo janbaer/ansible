@@ -1,5 +1,7 @@
 ---
 
+HYPRLAND_MONITOR_CONF: ",3440x1440@100,auto,auto"
+
 timers:
   - name: backup-to-usb
     user: "jan"

@@ -54,6 +54,15 @@
       - swaylock-effects                # Screenlocking with nice effects
       - swaync                          # A simple GTK based notification daemon for SwayWM
       - nwg-drawer-bin                  # A drawer for wayland compositors
+      - nwg-look-bin                    # A configuration tool for GTK settings in Wayland
       - wdisplays                       # Configuring display in Wayland
   ignore_errors: true
+
+- name: Configure monitor.conf with template
+  ansible.builtin.template:
+    src: monitor.conf.j2
+    dest: ~/.config/hypr/monitor.conf
+    owner: "{{ USER_NAME }}"
+    group: "{{ USER_NAME }}"
+    mode: "0600"
 
