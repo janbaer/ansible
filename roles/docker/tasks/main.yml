@@ -27,3 +27,10 @@
     name: docker
     enabled: true
     state: started
+
+- name: Install additional packages from aur
+  aur:
+    use: yay
+    name:
+      - aur/lazydocker-git
+  ignore_errors: true
