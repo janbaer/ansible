@@ -1,4 +1,12 @@
+# vim:ft=yaml.ansible
 ---
+
+- name: Install required packages for installing davfs2
+  community.general.pacman:
+    name:
+      - autoconf      # A GNU tool for automatically configuring source code
+    state: present
+    force: false
 
 - name: Install davfs2 package from aur
   become: true

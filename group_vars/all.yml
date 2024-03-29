@@ -50,7 +50,6 @@ COMMON_PACKAGES:
   - ncdu # Show disk usage
   - ttf-fira-code # My favorite fonts for source code with ligatures
   - ttf-nerd-fonts-symbols-common
-  - pam-u2f # Support for authentication with U2F keys
   - pavucontrol # Pulseaudio Audio Control
   - pdfpc # PdfViewer for presentations
   - pinta # Image-Editor
