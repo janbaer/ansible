@@ -1,3 +1,4 @@
+# vim:ft=yaml.ansible
 ---
 
 - name: Update pacman cache

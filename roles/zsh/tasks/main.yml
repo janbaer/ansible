@@ -1,3 +1,4 @@
+# vim:ft=yaml.ansible
 ---
 
 - name: Clone oh-my-zsh

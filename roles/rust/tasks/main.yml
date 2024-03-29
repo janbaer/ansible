@@ -1,3 +1,4 @@
+# vim:ft=yaml.ansible
 ---
 
 - name: Check if cargo is installed

@@ -1,3 +1,4 @@
+# vim:ft=yaml.ansible
 ---
 
 - name: Create directory where the u2f rules file should be copied
@@ -12,7 +13,7 @@
 - name: Copy u2f-rules to be make Linux to detect my KEY-ID u2f usb dongle
   become: true
   ansible.builtin.copy:
-    src: ./../files/etc/udev/rules.d/70-u2f.rules
+    src: files/etc/udev/rules.d/70-u2f.rules
     dest: /etc/udev/rules.d/70-u2f.rules
     owner: root
     group: root
@@ -28,6 +29,7 @@
   community.general.pacman:
     name:
       - yubikey-manager-qt
-      - x11-ssh-askpass # Required for Yubikey with Pin
+      - x11-ssh-askpass       # Required for Yubikey with Pin
+      - pam-u2f               # Support for authentication with U2F keys
     state: present
     force: false

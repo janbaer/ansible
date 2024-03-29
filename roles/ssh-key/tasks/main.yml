@@ -1,3 +1,4 @@
+# vim:ft=yaml.ansible
 ---
 
 - name: Create .ssh dir if not exists
