@@ -32,9 +32,10 @@
       - slurp                           # Required for making screenshots
       - swappy                          # Required for making screenshots
       - yad                             # Show a GTK popup from the commandline
-      - blueman
+      - blueman                         # Toolbar applet for Bluetooth
       - pasystray
       - volumeicon
+      - brightnessctl                   # Control monitor brightness with fn-keys
     state: present
     force: false
 
