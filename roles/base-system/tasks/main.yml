@@ -16,6 +16,7 @@
     name: "{{COMMON_PACKAGES}}"
     state: present
     force: false
+  ignore_errors: true
 
 - name: Install packages from aur
   aur:
