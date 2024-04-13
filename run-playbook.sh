@@ -4,7 +4,7 @@ export ANSIBLE_STDOUT_CALLBACK="yaml"
 
 if [ $# -eq 0 ]; then
   echo "Install some preconditions..."
-  pamac install --no-confirm ansible yay-bin ansible-aur-git
+  pamac install --no-confirm ansible yay fakeroot ansible-aur
 fi
 
 HOST=$(tr '[:upper:]' '[:lower:]' < /etc/hostname)
