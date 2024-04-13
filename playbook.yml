@@ -10,17 +10,17 @@
     - { role: nodejs, tags: [nodejs] }
     - { role: rust, tags: [rust] }
     - { role: k8s, tags: [k8s] }
-    # - {role: python, tags: [python]}
-    - { role: docker, tags: [docker] }
+    - { role: python, tags: [python, never] }
+    - { role: docker, tags: [docker, never] }
     - { role: i3, tags: [i3, never] }
-    - { role: hyprland, tags: [hyprland, never] }
     - { role: tmux, tags: [tmux] }
     - { role: zsh, tags: [zsh] }
+    - { role: hyprland, tags: [hyprland, never] }
     - { role: ssh-key, tags: [ssh, ssh-key] }
     - { role: dotfiles, tags: [dotfiles] }
     - { role: vscode, tags: [vscode] }
     - { role: vagrant, tags: [vagrant, never] }
-    - { role: mailbox-drive, tags: [mailbox-drive] }
+    - { role: mailbox-drive, tags: [mailbox, mailbox-drive, never] }
     - { role: security, tags: [security] }
     - { role: pipewire, tags: [pipewire, never] }
 
@@ -37,6 +37,6 @@
 
 - hosts: notebooks
   roles:
-    - { role: libinput-gestures, tags: [libinput, touchpad] }
+    - { role: libinput-gestures, tags: [never, libinput, touchpad] }
     - { role: u2f-support, tags: [u2f] }
-    - { role: huawei-soundfix, tags: [huawei] }
+    - { role: huawei-soundfix, tags: [never, huawei] }
