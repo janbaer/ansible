@@ -44,3 +44,7 @@
   git:
     repo: ssh://jan@jabasoft-ds/volume1/homes/jan/git/pass
     dest: ~/.password-store
+
+- name: Tell gopass which store should be used
+  ansible.builtin.command:
+    cmd: "gopass config mounts.path ~/.password-store"
