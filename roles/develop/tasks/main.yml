@@ -1,3 +1,4 @@
+# vm:ft=yaml.ansible
 ---
 
 - name: Install basic development tools
@@ -31,6 +32,7 @@
     use: yay
     name:
       - aur/git-extras
+      - python-xyzservices
   ignore_errors: true
 
 - include_tasks: ./terraform.yml
@@ -41,3 +43,6 @@
 
 - include_tasks: ./atuin.yaml
   tags: atuin, never
+
+- include_tasks: ./lazygit.yml
+  tags: lazygit

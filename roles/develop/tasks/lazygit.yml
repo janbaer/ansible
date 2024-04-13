@@ -1,0 +1,36 @@
+# vim:ft=yaml.ansible
+---
+
+- name: Download and install lazygit {{ LAZYGIT_VERSION }}
+  tags: lazygit
+  block:
+    - name: Download Lazygit archive
+      ansible.builtin.get_url:
+        url: https://github.com/jesseduffield/lazygit/releases/download/v{{ LAZYGIT_VERSION }}/lazygit_{{ LAZYGIT_VERSION }}_Linux_x86_64.tar.gz
+        dest: /tmp/lazygit.tar.gz
+        mode: 0644
+      check_mode: false
+
+    - name: Unarchive tgz file
+      ansible.builtin.unarchive:
+        copy: false
+        src: "/tmp/lazygit.tar.gz"
+        dest: "/tmp"
+        creates: "lazygit"
+      ignore_errors: "{{ ansible_check_mode }}"
+
+    - name: Copy lazygit binary /usr/local/bin
+      become: true
+      ansible.builtin.copy:
+        remote_src: true
+        src: "/tmp/lazygit"
+        dest: "/usr/local/bin/lazygit"
+        owner: "root"
+        group: "root"
+        mode: 0755
+      ignore_errors: "{{ ansible_check_mode }}"
+
+    - name: Cleanup
+      file:
+        path: "/tmp/lazygit"
+        state: absent

@@ -1,3 +1,4 @@
+# vim:ft=yaml.ansible
 ---
 
 - name: Install molecule and plugins
@@ -20,4 +21,3 @@
         name:
           - 'molecule-plugins[docker]'
           - 'molecule-plugins[vagrant]'
-
