@@ -4,7 +4,9 @@
 - name: Install tmux
   become: true
   pacman:
-    name: tmux
+    name:
+      - powerline
+      - tmux
 
 - name: Create tmux config dir
   file:
