@@ -40,7 +40,6 @@ COMMON_PACKAGES:
   - kitty # Terminal with tranparency and glyph fonts
   - luarocks # Required by Mason in Neovim
   - mplayer # Videoplayer for the terminal
-  - moc # MusicPlayer for the terminal
   - nautilus # The file explorer from Gnome
   - neofetch # Creating a nice splashscreen when starting a new shell
   - neovim # the better version of VIM which is the better version of VI
@@ -72,7 +71,8 @@ COMMON_PACKAGES:
   - zathura # A Pdf viewer for the terminal
   - zathura-pdf-mupdf # Plugin for Zahthura to show Pdf and Epubs
 
-AUR_PACKAGES: []
+AUR_PACKAGES:
+  - moc-pulse # MusicPlayer for the terminal
 
 IS_NOTEBOOK: false
 
