@@ -26,9 +26,12 @@
 
 - name: Install RawTherapee
   include_tasks: ./raw-therapee.yml
+  tags: raw-therapee
 
 - name: Download and Install youtube-dl
   include_tasks: ./youtube-dl.yml
 
 - name: Download and Install Obsidian
   include_tasks: ./obsidian.yml
+  tags: obsidian
+

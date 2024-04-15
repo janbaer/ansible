@@ -1,8 +1,31 @@
+# vim.ft:yaml.ansible
 ---
 
-- name: Download RawTherapee {{ RAW_THERAPEE_VERSION }} AppImage
-  become: true
-  get_url:
-    url: "https://rawtherapee.com/shared/builds/linux/RawTherapee_{{ RAW_THERAPEE_VERSION }}.AppImage"
-    dest: "/usr/local/bin/RawTherapee.AppImage"
-    mode: 0755
+- name: Download and install RawTherapee {{ RAW_THERAPEE_VERSION }}
+  tags: raw-therapee
+  block:
+    - name: Check if the version {{ RAW_THERAPEE_VERSION }} is installed
+      ansible.builtin.stat:
+        path: "/usr/local/bin/RawTherapee_{{ RAW_THERAPEE_VERSION }}.AppImage"
+      register: _raw_therapee_stat_result
+
+    - name: Remove any previous RawTherapee AppImage
+      become: true
+      ansible.builtin.shell:
+        cmd: "rm --force /usr/local/bin/RawTherapee_*.AppImage"
+      when: not _raw_therapee_stat_result.stat.exists
+
+    - name: Download RawTherapee {{ RAW_THERAPEE_VERSION }} AppImage
+      become: true
+      get_url:
+        url: "https://rawtherapee.com/shared/builds/linux/RawTherapee_{{ RAW_THERAPEE_VERSION }}.AppImage"
+        dest: "/usr/local/bin/RawTherapee_{{ RAW_THERAPEE_VERSION }}.AppImage"
+        mode: 0755
+      when: not _raw_therapee_stat_result.stat.exists
+
+    - name: Create RawTherapee Desktop file
+      ansible.builtin.template:
+        src: RawTherapee.desktop.j2
+        dest: "~/.local/share/applications/RawTherapee.desktop"
+        mode: 0644
+      when: not _raw_therapee_stat_result.stat.exists
