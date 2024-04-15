@@ -9,9 +9,10 @@
 - name: Install vscode extensions
   command: code --install-extension {{item}}
   with_items:
+    - dracula-theme.theme-dracula
     - alex-pattison.theme-cobalt3
     - golang.Go
-    - kavod-io.vscode-jest-test-adapter
+    - Orta.vscode-jest
     - ryanluker.vscode-coverage-gutters
     - hbenl.vscode-test-explorer
     - eamodio.gitlens
@@ -22,6 +23,6 @@
     - swellaby.vscode-rust-test-adapter
     - redhat.vscode-yaml
     - redhat.ansible
-    - ms-azuretools.vscode-docker
-    - ms-vscode-remote.remote-ssh
+    # - ms-azuretools.vscode-docker
+    # - ms-vscode-remote.remote-ssh
   ignore_errors: true
