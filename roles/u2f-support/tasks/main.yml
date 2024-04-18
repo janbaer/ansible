@@ -34,6 +34,9 @@
     state: present
     force: false
 
+- name: Download and install yubico-authenticator
+  include_tasks: ./authenticator.yml
+
 - name: Activate psscd service, since it's required by the yubico-authenticator
   become: true
   ansible.builtin.service:
