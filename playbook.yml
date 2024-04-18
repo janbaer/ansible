@@ -23,6 +23,7 @@
     - { role: mailbox-drive, tags: [mailbox, mailbox-drive, never] }
     - { role: security, tags: [security] }
     - { role: pipewire, tags: [pipewire, never] }
+    - { role: yubico, tags: [yubico, never] }
 
 - hosts: private_pcs
   roles:
@@ -33,10 +34,8 @@
 - hosts: desktop_pcs
   roles:
     - { role: kvm, tags: [kvm] }
-    - { role: u2f-support, tags: [u2f] }
 
 - hosts: notebooks
   roles:
     - { role: libinput-gestures, tags: [never, libinput, touchpad] }
-    - { role: u2f-support, tags: [u2f] }
     - { role: huawei-soundfix, tags: [never, huawei] }

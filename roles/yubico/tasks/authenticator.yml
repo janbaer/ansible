@@ -42,3 +42,11 @@
       ansible.builtin.file:
         path: "{{ yubico_authenticator_download_path }}"
         state: absent
+
+    - name: Create desktop file
+      ansible.builtin.template:
+        src: "yubico-authenticator.desktop.j2"
+        dest: "~/.local/share/applications/yubico-authenticator.desktop"
+        mode: 0644
+        owner: "{{ USER_NAME }}"
+        group: "{{ USER_NAME }}"
