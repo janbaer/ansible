@@ -33,3 +33,10 @@
       - pam-u2f               # Support for authentication with U2F keys
     state: present
     force: false
+
+- name: Activate psscd service, since it's required by the yubico-authenticator
+  become: true
+  ansible.builtin.service:
+    name: pcscd.service
+    enabled: true
+    state: started
