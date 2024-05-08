@@ -10,6 +10,8 @@ RAW_THERAPEE_VERSION: '5.10'
 OBSIDIAN_VERSION: '1.5.12'
 TERRAFORM_VERSION: "1.8.3"
 
+yubico_authenticator_version: '7.0.0'
+
 COMMON_PACKAGES:
   - alsa-tools # Tools for managing audio output
   - arandr # GUI for selecting multiple monitors location and resolution
