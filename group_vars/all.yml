@@ -41,6 +41,7 @@ COMMON_PACKAGES:
   - keychain # re-use ssh-agent and/or gpg-agent between logins
   - kitty # Terminal with tranparency and glyph fonts
   - luarocks # Required by Mason in Neovim
+  - lf # A terminal file manager inspired by ranger
   - mplayer # Videoplayer for the terminal
   - nautilus # The file explorer from Gnome
   - neofetch # Creating a nice splashscreen when starting a new shell
@@ -54,7 +55,6 @@ COMMON_PACKAGES:
   - pdfpc # PdfViewer for presentations
   - pinta # Image-Editor
   - pygmentize # highlights the input file
-  - ranger # My favorite file manager for the terminal
   - ripgrep # The better grep alternative, written in Rust
   - scrot # Screenshot-Tool
   - seahorse # Key management SSH and GPG
