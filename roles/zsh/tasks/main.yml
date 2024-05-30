@@ -1,24 +1,6 @@
 # vim:ft=yaml.ansible
 ---
 
-- name: Clone oh-my-zsh
-  git:
-    repo: https://github.com/robbyrussell/oh-my-zsh.git
-    dest: "{{ HOME_DIR }}/.oh-my-zsh"
-    update: false
-
-- name: Clone fzf-zsh-plugin
-  git:
-    repo: https://github.com/unixorn/fzf-zsh-plugin.git
-    dest: "{{ HOME_DIR }}/.oh-my-zsh/plugins/fzf-zsh-plugin"
-    update: false
-
-- name: Clone zsh-autosuggestions
-  git:
-    repo: https://github.com/zsh-users/zsh-autosuggestions.git
-    dest: "{{ HOME_DIR }}/.zsh/zsh-autosuggestions"
-    update: false
-
 - name: set zsh as default shell
   become: true
   command: "chsh -s /usr/bin/zsh {{ USER_NAME }}"
