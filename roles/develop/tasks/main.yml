@@ -25,6 +25,7 @@
       - dog                   # A dns-lookup tool (like dig) https://dns.lookup.dog/
       - pwgen                 # Password generator from the commandline. Use`pwgen 30 -1` to generate one password with a length of 30 characters
       - molecule              # Testing Ansible roles
+      - tig                   # My favorite tool for Git in the terminal
     state: present
 
 - name: Install developer packages from aur

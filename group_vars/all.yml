@@ -13,65 +13,61 @@ TERRAFORM_VERSION: "1.8.3"
 yubico_authenticator_version: '7.0.0'
 
 COMMON_PACKAGES:
-  - alsa-tools # Tools for managing audio output
-  - arandr # GUI for selecting multiple monitors location and resolution
-  - arch-audit # Searching for vulnerable arch-packages
-  - ack # ack is a grep-like source code search tool. (I don't use it anymore, but without the ack plugin in nvim won't work)
-  - bat # A combination of cat and less written in Rust https://github.com/sharkdp/bat
-  - brave-browser # Brave browser, alternative for Chromium with builtin sync and ad-block
-  - btop # A monitor of system resources, bpytop ported to C++
-  - otf-comicshanns-nerd # Another nice patched Nerdfont
-  - curl # Http-Requests from the commandline
-  - chromium # My favorite browser
-  - dunst # Simple notifications daemon https://wiki.archlinux.org/title/Dunst#Installation
-  - easytag # Managing id3 tags of MP3 files
-  - evince # Another Pdf-Viewer
-  - eza # A nice replacement for the ls command
-  - filezilla # Transferring data with SSH
-  - fzf # Fuzzyfinder for the commandline
-  - fx # Better navigation for large JSON on the commandline
-  - glow # Command-line markdown renderer
-  - gopass # Passwordmanagement in the commandline (Better than pass)
-  - gedit # The Gnome editor
-  - gvim # Vi IMproved, a programmer's text editor
-  - gvfs-mtp # Drivers for support mounting Android devices
-  - htop # Better tool to show system resource usage in the commandline
-  - inxi # Show hardware information about my computer
-  - keepassxc # Manage my passwords with a GUI
-  - keychain # re-use ssh-agent and/or gpg-agent between logins
-  - kitty # Terminal with tranparency and glyph fonts
-  - luarocks # Required by Mason in Neovim
-  - lf # A terminal file manager inspired by ranger
-  - mplayer # Videoplayer for the terminal
-  - nautilus # The file explorer from Gnome
-  - neofetch # Creating a nice splashscreen when starting a new shell
-  - neovim # the better version of VIM which is the better version of VI
-  - network-manager-applet # Managing network connection from the i3 toolbar
-  - nsxiv # Imageviewing in the terminal
-  - ncdu # Show disk usage
-  - ttf-fira-code # My favorite fonts for source code with ligatures
+  - alsa-tools                     # Tools for managing audio output
+  - arandr                         # GUI for selecting multiple monitors location and resolution
+  - arch-audit                     # Searching for vulnerable arch-packages
+  - ack                            # ack is a grep-like source code search tool. (I don't use it anymore, but without the ack plugin in nvim won't work)
+  - bat                            # A combination of cat and less written in Rust https://github.com/sharkdp/bat
+  - brave-browser                  # Brave browser, alternative for Chromium with builtin sync and ad-block
+  - btop                           # A monitor of system resources, bpytop ported to C++
+  - otf-comicshanns-nerd           # Another nice patched Nerdfont
+  - curl                           # Http-Requests from the commandline
+  - chromium                       # My favorite browser
+  - dunst                          # Simple notifications daemon https://wiki.archlinux.org/title/Dunst#Installation
+  - easytag                        # Managing id3 tags of MP3 files
+  - evince                         # Another Pdf-Viewer
+  - eza                            # A nice replacement for the ls command
+  - filezilla                      # Transferring data with SSH
+  - fzf                            # Fuzzyfinder for the commandline
+  - fx                             # Better navigation for large JSON on the commandline
+  - gopass                         # Passwordmanagement in the commandline (Better than pass)
+  - gedit                          # The Gnome editor
+  - gvim                           # Vi IMproved, a programmer's text editor
+  # - gvfs-mtp                       # Drivers for support mounting Android devices
+  - htop                           # Better tool to show system resource usage in the commandline
+  - inxi                           # Show hardware information about my computer
+  - keepassxc                      # Manage my passwords with a GUI
+  - keychain                       # reuse ssh-agent and/or gpg-agent between logins
+  - kitty                          # Terminal with transparency and glyph fonts
+  - luarocks                       # Required by Mason in Neovim
+  - lf                             # A terminal file manager inspired by ranger
+  - mplayer                        # Videoplayer for the terminal
+  - nautilus                       # The file explorer from Gnome
+  - neofetch                       # Creating a nice splashscreen when starting a new shell
+  - neovim                         # the better version of VIM which is the better version of VI
+  - network-manager-applet         # Managing network connection from the i3 toolbar
+  - nsxiv                          # Imageviewing in the terminal
+  - ncdu                           # Show disk usage
+  - ttf-fira-code                  # My favorite fonts for source code with ligatures
   - ttf-nerd-fonts-symbols-common
-  - pavucontrol # Pulseaudio Audio Control
-  - pdfpc # PdfViewer for presentations
-  - pinta # Image-Editor
-  - pygmentize # highlights the input file
-  - ripgrep # The better grep alternative, written in Rust
-  - scrot # Screenshot-Tool
-  - seahorse # Key management SSH and GPG
-  - shotwell # ImageLibraries with GUI
-  - simple-scan # Scanning of documents and photos
-  - sshpass # Pass passwords to the ssh tool
-  - starship # The minimal, blazing-fast, and infinitely customizable prompt for any shell https://starship.rs/
-  # - the_silver_searcher # AG is the faster alternative to Ack
-  - tig # My favorite tool for Git in the terminal
-  - tree # Commandline tool to show directory tree
-  - veracrypt # Using encrypted file containers
-  - screenkey # Show the current typed key on the screen (helpful for presentations)
-  - watchexec # Required for running commands when a file will changed
-  - xclip # Clipboard usage in the terminal
-  - xsel # Commandlinetool for the clipboard
-  - zathura # A Pdf viewer for the terminal
-  - zathura-pdf-mupdf # Plugin for Zahthura to show Pdf and Epubs
+  - pavucontrol                    # Pulseaudio Audio Control
+  - pdfpc                          # PdfViewer for presentations
+  - pinta                          # Image-Editor
+  - pygmentize                     # highlights the input file
+  - ripgrep                        # The better grep alternative, written in Rust
+  - scrot                          # Screenshot-Tool
+  - seahorse                       # Key management SSH and GPG
+  - shotwell                       # ImageLibraries with GUI
+  - simple-scan                    # Scanning of documents and photos
+  - sshpass                        # Pass passwords to the ssh tool
+  - tree                           # Commandline tool to show directory tree
+  - veracrypt                      # Using encrypted file containers
+  - screenkey                      # Show the current typed key on the screen (helpful for presentations)
+  - watchexec                      # Required for running commands when a file will changed
+  - xclip                          # Clipboard usage in the terminal
+  - xsel                           # Commandlinetool for the clipboard
+  - zathura                        # A Pdf viewer for the terminal
+  - zathura-pdf-mupdf              # Plugin for Zahthura to show Pdf and Epubs
 
 AUR_PACKAGES:
   - moc-pulse # MusicPlayer for the terminal
@@ -106,4 +102,3 @@ ATUIN_PASSWORD: "{{ vault_atuin_password }}"
 ATUIN_KEY: "{{ vault_atuin_key }}"
 
 HYPRLAND_MONITOR_CONF: ",preferred,auto,auto"
-
