@@ -5,7 +5,7 @@ HOME_DIR: '/home/{{ USER_NAME }}'
 HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 
 NODE_VERSION: '20.11.0'
-GO_VERSION: '1.22.3'
+GO_VERSION: '1.22.4'
 RAW_THERAPEE_VERSION: '5.10'
 OBSIDIAN_VERSION: '1.5.12'
 TERRAFORM_VERSION: "1.8.3"
