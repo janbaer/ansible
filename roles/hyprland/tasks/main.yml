@@ -16,12 +16,12 @@
     name:
       - hyprland                        # Hyprland is a highly customizable dynamic tiling Wayland compositor
       - hyprpaper                       # Show wallpapers in Hyprland
+      - hypridle
+      - hyprlock
       - waybar                          # Highly customizable Wayland bar for Sway and Wlroots based compositors.
-      - swayidle                        # Lock screen after a specific idle time
       - rofi                            # A window switcher, application launcher and dmenu replacement
       - dunst                           # Show user messages
       - feh                             # Selecting Images for the wallpaper
-      # - swaylock                      # Screenlocking without nice effects
       - xdg-desktop-portal-hyprland     # xdg-desktop-portal backend for hyprland
       - ttf-font-awesome                # Required for showing signs in Waybar
       - wl-clipboard                    # Handling system-wide clipboard in Wayland
@@ -53,8 +53,7 @@
     use: yay
     name:
       - wlogout                         # Show a nice exit screen with multiple options
-      - swaylock-effects                # Screenlocking with nice effects
-      - swaync                          # A simple GTK based notification daemon for SwayWM
+      # - swaync                          # A simple GTK based notification daemon for SwayWM
       - nwg-drawer-bin                  # A drawer for wayland compositors
       - nwg-look-bin                    # A configuration tool for GTK settings in Wayland
       - wdisplays                       # Configuring display in Wayland
