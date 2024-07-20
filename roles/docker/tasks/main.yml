@@ -5,7 +5,6 @@
   pacman:
     name:
       - docker
-      - docker-compose
       - python-docker
 
 - name: Ensure the docker group exists

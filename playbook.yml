@@ -11,7 +11,7 @@
     - { role: rust, tags: [rust] }
     - { role: k8s, tags: [k8s] }
     - { role: python, tags: [python, never] }
-    - { role: docker, tags: [docker, never] }
+    - { role: docker, tags: [docker] }
     - { role: i3, tags: [i3, never] }
     - { role: tmux, tags: [tmux] }
     - { role: zsh, tags: [zsh] }
