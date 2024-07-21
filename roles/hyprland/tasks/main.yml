@@ -67,3 +67,11 @@
     group: "{{ USER_NAME }}"
     mode: "0600"
 
+- name: Copy pamd config for hyprlock
+  ansible.builtin.copy:
+    src: pamd-hyprlock
+    dest: /etc/pam.d/hyprlock
+    owner: root
+    group: root
+    mode: 0644
+

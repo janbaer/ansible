@@ -1,52 +1,67 @@
 # vim.ft: yaml.ansible
 ---
 
-- set_fact:
-    yubico_authenticator_url: "https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-{{ yubico_authenticator_version }}-linux.tar.gz"
-    yubico_authenticator_download_path: "~/Downloads/yubico-authenticator.tar.gz"
-    yubico_authenticator_target_path: "/usr/local/bin/yubico-authenticator"
-
-- name: Check if yubico-authenticator is installed
-  ansible.builtin.stat:
-    path: "{{ yubico_authenticator_target_path }}"
-  register: _yubico_authenticator_stat_result
-
-- name: Download and install yubico-authenticator
-  when: not _yubico_authenticator_stat_result.stat.exists
+- name: Donwload and install yubico-authenticator
+  tags:
+    - yubico
+    - yubico-authenticator
   block:
-    - name: Download the yubico-authenticator {{ yubico_authenticator_version }}
-      ansible.builtin.get_url:
-        url: "{{ yubico_authenticator_url }}"
-        dest: "{{ yubico_authenticator_download_path }}"
-        mode: 0644
+    - set_fact:
+        yubico_authenticator_url: "https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-{{ yubico_authenticator_version }}-linux.tar.gz"
+        yubico_authenticator_download_path: "~/Downloads/yubico-authenticator.tar.gz"
+        yubico_authenticator_target_path: "/usr/local/bin/yubico-authenticator"
 
-    - name: Extract the package
-      ansible.builtin.unarchive:
-        copy: false
-        src: "{{ yubico_authenticator_download_path }}"
-        dest: "/tmp"
-        creates: "yubico-authenticator"
-      ignore_errors: "{{ ansible_check_mode }}"
+    - name: Check if yubico-authenticator is installed
+      ansible.builtin.stat:
+        path: "{{ yubico_authenticator_target_path }}"
+      register: _yubico_authenticator_stat_result
 
-    - name: Move the extracted folder to /usr/local/bin
-      become: true
-      ansible.builtin.copy:
-        remote_src: true
-        src: "/tmp/yubico-authenticator-{{ yubico_authenticator_version }}-linux/"
-        dest: "{{ yubico_authenticator_target_path }}"
-        mode: 0755
-        owner: root
-        group: root
+    - debug:
+        msg: "yubico-authenticator is already installed. If you want to reinstall, remove first /usr/loca/bin/yubico-authenticator directory"
+      when: _yubico_authenticator_stat_result.stat.exists
 
-    - name: Cleanup
-      ansible.builtin.file:
-        path: "{{ yubico_authenticator_download_path }}"
-        state: absent
+    - name: Install yubico-authenticator
+      when: not _yubico_authenticator_stat_result.stat.exists
+      block:
+        - name: Download the yubico-authenticator {{ yubico_authenticator_version }}
+          ansible.builtin.get_url:
+            url: "{{ yubico_authenticator_url }}"
+            dest: "{{ yubico_authenticator_download_path }}"
+            mode: 0644
 
-    - name: Create desktop file
-      ansible.builtin.template:
-        src: "yubico-authenticator.desktop.j2"
-        dest: "~/.local/share/applications/yubico-authenticator.desktop"
-        mode: 0644
-        owner: "{{ USER_NAME }}"
-        group: "{{ USER_NAME }}"
+        - name: Extract the package
+          ansible.builtin.unarchive:
+            copy: false
+            src: "{{ yubico_authenticator_download_path }}"
+            dest: "/tmp"
+            creates: "yubico-authenticator"
+          ignore_errors: "{{ ansible_check_mode }}"
+
+        - name: Move the extracted folder to /usr/local/bin
+          become: true
+          ansible.builtin.copy:
+            remote_src: true
+            src: "/tmp/yubico-authenticator-{{ yubico_authenticator_version }}-linux/"
+            dest: "{{ yubico_authenticator_target_path }}"
+            mode: 0755
+            owner: root
+            group: root
+
+        - name: Cleanup
+          ansible.builtin.file:
+            path: "{{ yubico_authenticator_download_path }}"
+            state: absent
+
+        - name: Create desktop file
+          ansible.builtin.template:
+            src: "yubico-authenticator.desktop.j2"
+            dest: "~/.local/share/applications/yubico-authenticator.desktop"
+            mode: 0644
+            owner: "{{ USER_NAME }}"
+            group: "{{ USER_NAME }}"
+        - name: Activate psscd service, since it's required by the yubico-authenticator
+          become: true
+          ansible.builtin.service:
+            name: pcscd.service
+            enabled: true
+            state: started

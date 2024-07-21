@@ -1,0 +1,34 @@
+# ansible:tf=yaml.ansible
+---
+
+- name: Configure system to support login with Yubikey
+  tags:
+    - yubico
+    - yubico-pamd
+  block:
+
+  - name: Install required software and drivers
+    become: true
+    community.general.pacman:
+      name:
+        - pam-u2f               # Support for authentication with U2F keys
+      state: present
+      force: false
+
+  - name: Copy u2f_keys to user Yubico config directory
+    ansible.builtin.copy:
+      src: u2f_keys
+      dest: ~/.config/Yubico/u2f_keys
+      owner: "{{ USER_NAME }}"
+      group: "{{ USER_NAME }}"
+      mode: "0600"
+
+  - name: Add line to pam.d config file
+    become: true
+    ansible.builtin.lineinfile:
+      path: "/etc/pam.d/{{ item.file }}"
+      regex: "^auth.+pam_u2f.so"
+      insertafter: "^#%PAM-1.0"
+      line: "{{ item.config }}"
+      state: present
+    with_items: "{{ yubico_pamd_config }}"

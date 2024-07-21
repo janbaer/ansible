@@ -1,3 +1,11 @@
 ---
 
 yubico_authenticator_version: "7.0.0"
+
+yubico_pamd_config:
+  - file: gdm-password
+    config: "auth       sufficient                  pam_u2f.so nouserok origin=pam://hostname appid=pam://hostname cue [cue_prompt=Tap your Yubikey] pinverification=1"
+  - file: sudo
+    config: "auth sufficient         pam_u2f.so origin=pam://hostname appid=pam://hostname cue [cue_prompt=Tap your Yubikey]"
+  - file: hyprlock
+    config: "auth sufficient      pam_u2f.so nouserok origin=pam://hostname appid=pam://hostname"

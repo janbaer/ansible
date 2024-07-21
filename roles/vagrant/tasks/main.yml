@@ -9,5 +9,7 @@
     state: present
 
 - name: Install libvirt plugin
-  command:
+  ansible.builtin.command:
     cmd: "vagrant plugin install vagrant-libvirt"
+  environment:
+    VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT: 1

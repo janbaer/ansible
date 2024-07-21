@@ -1,45 +1,16 @@
 # vim:ft=yaml.ansible
 ---
 
-- name: Create directory where the u2f rules file should be copied
-  become: true
-  ansible.builtin.file:
-    path: /etc/udev/rules.d
-    state: directory
-    owner: root
-    group: root
-    mode: 0755
-
-- name: Copy u2f-rules to be make Linux to detect my KEY-ID u2f usb dongle
-  become: true
-  ansible.builtin.copy:
-    src: files/etc/udev/rules.d/70-u2f.rules
-    dest: /etc/udev/rules.d/70-u2f.rules
-    owner: root
-    group: root
-    mode: 0644  # u=rw,g=r,o=r
-
-- name: Reload rules
-  become: true
-  ansible.builtin.command: "udevadm control --reload"
-  changed_when: false
-
-- name: Install required software and drivers
-  become: true
-  community.general.pacman:
-    name:
-      - yubikey-manager-qt
-      - x11-ssh-askpass       # Required for Yubikey with Pin
-      - pam-u2f               # Support for authentication with U2F keys
-    state: present
-    force: false
+- include_tasks: ./yubico.yml
 
 - name: Download and install yubico-authenticator
   include_tasks: ./authenticator.yml
+  tags:
+    - yubico
+    - yubico-authenticator
 
-- name: Activate psscd service, since it's required by the yubico-authenticator
-  become: true
-  ansible.builtin.service:
-    name: pcscd.service
-    enabled: true
-    state: started
+- name: Add pamd configuration to be able to login with Yubikey
+  include_tasks: ./pamd-config.yml
+  tags:
+    - yubico
+    - yubico-pamd
