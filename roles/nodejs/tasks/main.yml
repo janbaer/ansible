@@ -1,68 +1,38 @@
 ---
 
-- name: Check if nvm directory exists
-  stat:
-    path: "{{ NVM_DIR  }}"
-  register: NVM_DIR_CHECK
+- name: Check if volta exists
+  ansible.builtin.stat:
+    path: "{{ VOLTA_HOME  }}/bin/volta"
+  register: VOLTA_CHECK
 
-- name: Create nvm directory
-  file:
-    path: "{{ NVM_DIR  }}"
-    state: directory
-  when: NVM_DIR_CHECK.stat.exists == False
+- name: Install volta
+  ansible.builtin.shell:
+    cmd: "curl https://get.volta.sh | bash"
+    creates: "{{ VOLTA_HOME }}/bin/volta"
+  when: not VOLTA_CHECK.stat.exists
 
-- name: Install nvm
-  shell: >
-    curl https://raw.githubusercontent.com/creationix/nvm/v{{ NVM_VERSION }}/install.sh | sh
-    creates=/home/{{ USER_NAME }}/.nvm/nvm.sh
+- name: Install Node.js version {{ NODE_VERSION }}
+  ansible.builtin.command: "volta install node@{{ NODE_VERSION }}"
   environment:
-    NVM_DIR: "{{ NVM_DIR }}"
-  when: NVM_DIR_CHECK.stat.exists == False
-
-- name: Check if nvm exists
-  stat:
-    path: "{{ NVM_DIR  }}/nvm.sh"
-  register: NVM_CHECK
-
-- name: Make nvm.sh executable
-  file:
-    path: "{{ NVM_DIR }}/nvm.sh"
-    state: touch
-    mode: 0755
-  when: NVM_CHECK.stat.exists == true
-
-- name: Check if Node.js is installed and which version
-  block:
-    - name: Check if node is installed at all
-      command: "which node"
-      register: NODE_IS_INSTALLED
-
-    - name: Check installed Node.js version
-      command: "node --version"
-      register: NODE_CHECK_VERSION
-      when: NODE_IS_INSTALLED.rc == 0
-
-    - name: Install Node.js version {{ NODE_VERSION }}
-      shell: >
-        /usr/bin/bash -c "source {{ NVM_DIR }}/nvm.sh && nvm install {{ NODE_VERSION }} && nvm alias default {{ NODE_VERSION }}"
-      environment:
-        NVM_DIR: "{{ NVM_DIR }}"
-      when: NODE_IS_INSTALLED.rc == 1 or not NODE_VERSION in NODE_CHECK_VERSION.stdout
-  ignore_errors: true
-  when: NVM_CHECK.stat.exists == True
+    VOLTA_HOME: "{{ VOLTA_HOME }}"
+    PATH: "$PATH:{{ VOLTA_HOME }}/bin"
 
 - name: Install yarn
-  become: true
-  pacman:
-    name: yarn
-    state: present
+  ansible.builtin.command: "volta install yarn@1"
+  environment:
+    VOLTA_HOME: "{{ VOLTA_HOME }}"
+    PATH: "$PATH:{{ VOLTA_HOME }}/bin"
 
 - name: Install required global npm modules
-  npm:
+  community.general.npm:
     name: "{{ item }}"
     global: true
     state: present
-  with_items: "{{ GLOBAL_NPM_PACKAGES }}"
   environment:
-    PATH: $PATH:{{ NVM_DIR }}/versions/node/v{{ NODE_VERSION }}/bin/
+    VOLTA_HOME: "{{ VOLTA_HOME }}"
+    PATH: "$PATH:{{ VOLTA_HOME }}/bin"
+  with_items: "{{ GLOBAL_NPM_PACKAGES }}"
   ignore_errors: true
+
+- debug:
+    msg: "You need to install tree-sitter and tree-sitter-cli manually, because it fails from here at the moment!!!"
