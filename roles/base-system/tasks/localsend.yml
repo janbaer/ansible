@@ -1,0 +1,31 @@
+# vim.ft:yaml.ansible
+---
+
+- name: Download and install LocalSend appimage
+  tags: localsend
+  block:
+    - name: Check if the version {{ localsend_version }} is installed
+      ansible.builtin.stat:
+        path: "/usr/local/bin/localsend_v{{ localsend_version }}.AppImage"
+      register: _localsend_stat_result
+
+    - name: Remove any previous LocalSend AppImage
+      become: true
+      ansible.builtin.shell:
+        cmd: "rm --force /usr/local/bin/localsend_*.AppImage"
+      when: not _localsend_stat_result.stat.exists
+
+    - name: Download LocalSend {{ localsend_version }} AppImage
+      become: true
+      get_url:
+        url: "https://github.com/localsend/localsend/releases/download/v{{ localsend_version }}/LocalSend-{{ localsend_version }}-linux-x86-64.AppImage"
+        dest: "/usr/local/bin/localsend_v{{ localsend_version }}.AppImage"
+        mode: 0755
+      when: not _localsend_stat_result.stat.exists
+
+    - name: Create LocalSend Desktop file
+      ansible.builtin.template:
+        src: localsend.desktop.j2
+        dest: "~/.local/share/applications/localsend.desktop"
+        mode: 0644
+      when: not _localsend_stat_result.stat.exists

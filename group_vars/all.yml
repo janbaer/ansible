@@ -11,6 +11,7 @@ OBSIDIAN_VERSION: '1.6.7'
 TERRAFORM_VERSION: "1.9.3"
 
 yubico_authenticator_version: '7.0.0'
+localsend_version: "1.15.4"
 
 COMMON_PACKAGES:
   - alsa-tools                     # Tools for managing audio output

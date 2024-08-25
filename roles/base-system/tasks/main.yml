@@ -35,3 +35,6 @@
   include_tasks: ./obsidian.yml
   tags: obsidian
 
+- name: Install LocalSend
+  include_tasks: ./localsend.yml
+  tags: localsend
