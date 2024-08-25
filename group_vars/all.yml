@@ -1,16 +1,16 @@
 ---
 
 USER_NAME: "{{ lookup('env', 'USER') }}"
-HOME_DIR: '/home/{{ USER_NAME }}'
+HOME_DIR: "/home/{{ USER_NAME }}"
 HOST_NAME: "{{ lookup('file', '/etc/hostname') }}"
 
-NODE_VERSION: '20.15.1'
-GO_VERSION: '1.22.5'
-RAW_THERAPEE_VERSION: '5.10'
-OBSIDIAN_VERSION: '1.6.7'
+NODE_VERSION: "20.15.1"
+GO_VERSION: "1.23.0"
+RAW_THERAPEE_VERSION: "5.10"
+OBSIDIAN_VERSION: "1.6.7"
 TERRAFORM_VERSION: "1.9.3"
 
-yubico_authenticator_version: '7.0.0'
+yubico_authenticator_version: "7.0.0"
 localsend_version: "1.15.4"
 
 COMMON_PACKAGES:
