@@ -47,10 +47,9 @@
     dest: /etc/fstab
     line: "{{ item }}"
   with_items:
-    - "//jabasoft-ds/homes/jan	/media/jan/home cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
-    - "//jabasoft-ds/photo 	/media/jan/photo cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
-    - "//jabasoft-ds/music 	/media/jan/music cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
-    - "//jabasoft-ds/video 	/media/jan/video cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
-    - "//jabasoft-ds/daten 	/media/jan/daten cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
-    - "//jabasoft-ds/setup 	/media/jan/setup cifs credentials=/home/jan/.smb,vers=2.0,user,rw,noauto 0 0"
+    - "//jabasoft-ug/photo 	/media/jan/photo cifs credentials=/home/jan/.smb_ug,vers=3.0,user,rw,noauto 0 0"
+    - "//jabasoft-ug/music 	/media/jan/music cifs credentials=/home/jan/.smb_ug,vers=3.0,user,rw,noauto 0 0"
+    - "//jabasoft-ug/video 	/media/jan/video cifs credentials=/home/jan/.smb_ug,vers=3.0,user,rw,noauto 0 0"
+    - "//jabasoft-ug/daten 	/media/jan/daten cifs credentials=/home/jan/.smb_ug,vers=3.0,user,rw,noauto 0 0"
+    - "//jabasoft-ug/setup 	/media/jan/setup cifs credentials=/home/jan/.smb_ug,vers=3.0,user,rw,noauto 0 0"
     - "jabasoft-pve:/data/metube/mp3 /media/jan/pve/music nfs nfsvers=4,rw,auto 0 0"
