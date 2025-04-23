@@ -43,8 +43,8 @@
 - include_tasks: ./molecule.yml
   tags: molecule, never
 
-- include_tasks: ./atuin.yaml
-  tags: atuin, never
+- include_tasks: ./atuin.yml
+  tags: atuin
 
 - include_tasks: ./lazygit.yml
   tags: lazygit
