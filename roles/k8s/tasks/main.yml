@@ -11,3 +11,10 @@
       - stern     # Multi pod and container log tailing for Kubernetes
       - helm      # Creating deployment charts
     state: present
+
+- name: Install k8s packages from aur
+  aur:
+    use: yay
+    name:
+      - headlamp-bin
+  ignore_errors: true
