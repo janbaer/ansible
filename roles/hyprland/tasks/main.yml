@@ -23,6 +23,7 @@
       - dunst                           # Show user messages
       - feh                             # Selecting Images for the wallpaper
       - xdg-desktop-portal-hyprland     # xdg-desktop-portal backend for hyprland
+      - xdg-desktop-portal
       - ttf-font-awesome                # Required for showing signs in Waybar
       - wl-clipboard                    # Handling system-wide clipboard in Wayland
       - qt5-wayland                     # Provides APIs for Wayland
