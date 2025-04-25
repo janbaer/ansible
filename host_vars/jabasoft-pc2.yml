@@ -21,7 +21,6 @@ timers:
     user: "jan"
     command: "{{ HOME_DIR }}/bin/rsync-to-nas.sh"
     on_calendar: "hourly"
-    environment: "JABASOFT_DS_SSH_PORT={{ JABASOFT_DS_SSH_PORT }}"
     persistent: true
     accuracy_sec: "15sec"
     randomized_delay_sec: "15m"
@@ -29,7 +28,6 @@ timers:
     user: "jan"
     command: "{{ HOME_DIR }}/bin/rsync-mailbox-drive-to-nas.sh"
     on_calendar: "hourly"
-    environment: "JABASOFT_DS_SSH_PORT={{ JABASOFT_DS_SSH_PORT }}"
     persistent: true
     accuracy_sec: "15sec"
     randomized_delay_sec: "15m"
