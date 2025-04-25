@@ -63,6 +63,7 @@ COMMON_PACKAGES:
   - simple-scan                    # Scanning of documents and photos
   - sshpass                        # Pass passwords to the ssh tool
   - television                     # A general purpose fuzzy finder for your terminal
+  - tgpt                           # AI on the commandline
   - tree                           # Commandline tool to show directory tree
   - veracrypt                      # Using encrypted file containers
   - screenkey                      # Show the current typed key on the screen (helpful for presentations)
