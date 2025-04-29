@@ -91,15 +91,16 @@ MAILBOX_DRIVE_USER: 'jan.baer'
 GLOBAL_NPM_PACKAGES:
   - eslint
   - typescript
-  - ts-node               # Required to execute TS file directly from command line
+  - ts-node                     # Required to execute TS file directly from command line
   - prettier
-  - google-translate-cli  # Google Translate from the command line
-  - live-server           # Running a webserver from the current directory
-  - npkill                # Tool for cleanup node_modules folders from current working tree
-  - npm-check             # Checks current project for outdated or unused npm modules
-  - neovim                # Neovim client API and neovim remote plugin provider
-  - tree-sitter           # Required for Neovim
-  - tree-sitter-cli       # Required for Neovim
+  - google-translate-cli        # Google Translate from the command line
+  - live-server                 # Running a webserver from the current directory
+  - npkill                      # Tool for cleanup node_modules folders from current working tree
+  - npm-check                   # Checks current project for outdated or unused npm modules
+  - neovim                      # Neovim client API and neovim remote plugin provider
+  - tree-sitter                 # Required for Neovim
+  - tree-sitter-cli             # Required for Neovim
+  - "@anthropic-ai/claude-code" # AI on the commandline
 
 ATUIN_USER_NAME: "janbaer"
 ATUIN_PASSWORD: "{{ vault_atuin_password }}"
