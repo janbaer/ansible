@@ -54,7 +54,6 @@
     use: yay
     name:
       - wlogout                         # Show a nice exit screen with multiple options
-      # - swaync                          # A simple GTK based notification daemon for SwayWM
       - nwg-drawer-bin                  # A drawer for wayland compositors
       - nwg-look-bin                    # A configuration tool for GTK settings in Wayland
       - wdisplays                       # Configuring display in Wayland

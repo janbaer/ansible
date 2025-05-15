@@ -10,14 +10,14 @@
       - ctags                 # Its required for the tags plugin in VIM
       - dnsutils              # nslookup and dig
       - fd                    # Required by Neovim Telescope plugin to browse all projects
-      - gitg                  # GUI for Git
-      - git-delta             # Syntax-highlighting pager for git and diff output
       - gitui                 # Another nice terminal UI written for Git written in Rust
+      - gojq                  # Rewrite of JQ but with Go without any dependencies
       - highlight             # Highlighting sourcecode
-      - jc                    # Converts the output of popular command-line tools and file-types to JSON
-      - jq                    # Tool for querying json in the commandline
-      - jless                 # a command-line JSON viewer https://jless.io/
       - httpie                # My favorite tools for HTTP request in the commandline
+      - jc                    # Converts the output of popular command-line tools and file-types to JSON
+      # - jq                    # Tool for querying json in the commandline
+      - jless                 # a command-line JSON viewer https://jless.io/
+      - lumen                 # Instant AI Git Commit message, Git changes summary from the CLI
       - make
       - meld                  # Difftool with UI
       - yamllint              # Linting my yaml files from the commandline or in Neovim
